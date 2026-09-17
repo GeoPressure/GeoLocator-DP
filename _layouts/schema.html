@@ -78,16 +78,36 @@ table_schema_id = table_schema.name %} {{ table_schema.description | markdownify
         >{% if field.constraints.required %}*{% endif %}
       </td>
       <td>
-        {{ field.description | markdownify }} {% comment %} `required` is already shown by the
-        `*` next to the field name, so it is counted out and skipped below. {% endcomment %} {%
-        assign extra_constraints = 0 %} {% for constraint in field.constraints %} {% unless
-        constraint[0] == "required" %} {% assign extra_constraints = extra_constraints | plus: 1 %}
-        {% endunless %} {% endfor %} {% if extra_constraints > 0 %}
+        {{ field.description | markdownify }} {% comment %}
+          `required` is already shown by the `*` next to the field name, and `enum` repeats the
+          values of `categories`, which are listed below with their labels. Both are counted out
+          and skipped here.
+        {% endcomment %}
+        {% assign extra_constraints = 0 %} {% for constraint in field.constraints %} {% unless
+        constraint[0] == "required" or constraint[0] == "enum" and field.categories %} {% assign
+        extra_constraints = extra_constraints | plus: 1 %} {% endunless %} {% endfor %} {% if
+        extra_constraints > 0 %}
         <strong>Constraints</strong>
         <ul>
-          {% for constraint in field.constraints %}{% unless constraint[0] == "required" %}
+          {% for constraint in field.constraints %}{% unless constraint[0] == "required" or
+          constraint[0] == "enum" and field.categories %}
           <li>{{ constraint[0] }}: <code>{{ constraint[1] | join: ", " }}</code></li>
           {% endunless %}{% endfor %}
+        </ul>
+        {% endif %} {% if field.categories %}
+        <strong>Categories</strong>
+        <ul>
+          {% for category in field.categories %}
+          <li>
+            <code>{{ category.value | default: category }}</code>{% if category.label %} — {{
+            category.label }}{% endif %}{% if category['skos:exactMatch'] %} {% assign term_url =
+            category['skos:exactMatch'] | strip %}<span class="small text-muted"
+              >(same as
+              <a href="{{ term_url }}">{{ term_url | split: "/" | last }}</a
+              >)</span
+            >{% endif %}
+          </li>
+          {% endfor %}
         </ul>
         {% endif %} {% if field.example and field.example != "" %}
         <p><strong>Example</strong>: <code>{{ field.example }}</code></p>
