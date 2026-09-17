@@ -167,6 +167,70 @@ def check_schema_coherence(schema_descriptors: Dict[Path, dict]) -> bool:
     return not encountered_errors
 
 
+FIELDS_MATCH_VALUES = {"exact", "equal", "subset", "superset", "partial"}
+
+
+def _is_array_of_strings(value) -> bool:
+    return isinstance(value, list) and all(isinstance(item, str) for item in value)
+
+
+def check_v2_spellings(schema_descriptors: Dict[Path, dict]) -> bool:
+    """Check the table schemas use the Data Package v2 spelling of their keys.
+
+    The published `tableschema.json` profile is more permissive than the
+    standard on both counts, so these are checked here rather than left to
+    `Schema.validate_descriptor()`:
+
+    - `fieldsMatch` `MUST` be a string. The profile types it as an array, which
+      is an error being fixed in v2.1
+      (frictionlessdata/datapackage#965).
+    - `primaryKey` and foreign key fields "should now always be an array of
+      strings, not a string". The profile still allows the v1 string form.
+    """
+    encountered_errors = False
+
+    for schema_path, descriptor in schema_descriptors.items():
+        name = schema_path.name
+
+        fields_match = descriptor.get("fieldsMatch")
+        if fields_match is not None:
+            if not isinstance(fields_match, str):
+                print(
+                    f"✕ {name}: `fieldsMatch` must be a string, got "
+                    f"{type(fields_match).__name__} `{fields_match}`"
+                )
+                encountered_errors = True
+            elif fields_match not in FIELDS_MATCH_VALUES:
+                print(f"✕ {name}: unknown `fieldsMatch` value `{fields_match}`")
+                encountered_errors = True
+
+        primary_key = descriptor.get("primaryKey")
+        if primary_key is not None and not _is_array_of_strings(primary_key):
+            print(
+                f"✕ {name}: `primaryKey` must be an array of strings, got `{primary_key}`"
+            )
+            encountered_errors = True
+
+        for index, foreign_key in enumerate(descriptor.get("foreignKeys", [])):
+            if not isinstance(foreign_key, dict):
+                continue
+
+            reference = foreign_key.get("reference")
+            candidates = [("fields", foreign_key.get("fields"))]
+            if isinstance(reference, dict):
+                candidates.append(("reference.fields", reference.get("fields")))
+
+            for label, fields in candidates:
+                if not _is_array_of_strings(fields):
+                    print(
+                        f"✕ {name}: `foreignKeys[{index}].{label}` must be an array "
+                        f"of strings, got `{fields}`"
+                    )
+                    encountered_errors = True
+
+    return not encountered_errors
+
+
 def check_example_package(profile: dict) -> bool:
     """Validate example/datapackage.json against the GeoLocator DP profile.
 
@@ -250,6 +314,12 @@ if __name__ == "__main__":
     print("\nSchema coherence")
     if check_schema_coherence(schema_descriptors):
         print("✔︎ schema coherence checks passed")
+    else:
+        encountered_errors = True
+
+    print("\nData Package v2 spellings")
+    if check_v2_spellings(schema_descriptors):
+        print("✔︎ table schemas use the v2 spelling of `fieldsMatch` and keys")
     else:
         encountered_errors = True
 
