@@ -36,11 +36,24 @@ releases](https://github.com/GeoPressure/GeoLocator-DP/releases) in one place.
 - `$schema` remains optional and, when present, must be
   `https://datapackage.org/profiles/2.0/dataresource.json`.
 
+### Table schemas
+
+- Write [`fieldsMatch`](https://datapackage.org/standard/table-schema/#fieldsMatch)
+  as a string rather than an array, as the standard requires. The array form
+  came from an error in the published Table Schema profile
+  ([frictionlessdata/datapackage#965](https://github.com/frictionlessdata/datapackage/issues/965)),
+  fixed in Data Package v2.1.
+- Write [`primaryKey`](https://datapackage.org/standard/table-schema/#primaryKey)
+  and [`foreignKeys`](https://datapackage.org/standard/table-schema/#foreignKeys)
+  fields as arrays of strings, the Data Package v2 spelling.
+- Remove the `unique` constraint on `tags.tag_id`, which duplicated the primary
+  key.
+
 ### Repository
 
 - Add `example/datapackage.json` and `example/measurements.csv`.
-- Validate the example package against the profile in
-  `tests/validate_profile_and_schemas.py`.
+- Validate the example package, and the spelling of `fieldsMatch` and of the
+  keys, in `tests/validate_profile_and_schemas.py`.
 - Add this changelog page.
 
 ## v1.0
