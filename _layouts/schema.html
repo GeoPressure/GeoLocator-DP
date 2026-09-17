@@ -13,6 +13,50 @@ table_schema_id = table_schema.name %} {{ table_schema.description | markdownify
   </a>
 </p>
 
+{% comment %}
+  The schema properties that apply to the whole table. They are declared in the
+  table schema but used to be invisible here, which left the field descriptions
+  to restate foreign keys in prose.
+{% endcomment %}
+<ul class="list-unstyled small">
+  {% if table_schema.primaryKey %}
+  <li>
+    <strong>Primary key</strong>: {% for key in table_schema.primaryKey %}<a href="#{{ key }}"
+      ><code>{{ key }}</code></a
+    >{% unless forloop.last %}, {% endunless %}{% endfor %}{% if table_schema.primaryKey.size > 1 %}
+    — together these identify a row{% else %} — identifies a row{% endif %}.
+  </li>
+  {% endif %} {% for fk in table_schema.foreignKeys %} {% assign target_schema = fk.reference.resource
+  | append: "-table-schema" %} {% assign target_page = site.pages | where: "schema", target_schema |
+  first %}
+  <li>
+    <strong>Foreign key</strong>: {% for field in fk.fields %}<a href="#{{ field }}"
+      ><code>{{ field }}</code></a
+    >{% unless forloop.last %}, {% endunless %}{% endfor %} → {% if target_page %}<a
+      href="{{ target_page.url | relative_url }}#{{ fk.reference.fields | first }}"
+      >{% endif %}<code
+      >{{ fk.reference.resource }}.{{ fk.reference.fields | join: ", " }}</code
+    >{% if target_page %}</a
+    >{% endif %}
+  </li>
+  {% endfor %} {% if table_schema.missingValues %}
+  <li>
+    <strong>Missing values</strong>: {% for value in table_schema.missingValues %}{% if value == ""
+    %}an empty cell{% else %}<code>{{ value }}</code>{% endif %}{% unless forloop.last %}, {%
+    endunless %}{% endfor %}.
+  </li>
+  {% endif %} {% if table_schema.fieldsMatch == "partial" %}
+  <li>
+    <strong>Other columns</strong>: columns not listed below are allowed and kept as they are.
+  </li>
+  {% elsif table_schema.fieldsMatch == "superset" %}
+  <li>
+    <strong>Other columns</strong>: only the columns listed below are allowed. Any column may be
+    left out.
+  </li>
+  {% endif %}
+</ul>
+
 <table>
   <colgroup>
     <col width="25%" />
@@ -34,46 +78,36 @@ table_schema_id = table_schema.name %} {{ table_schema.description | markdownify
         >{% if field.constraints.required %}*{% endif %}
       </td>
       <td>
-        {{ field.description | markdownify }} {% if field.constraints %}
+        {{ field.description | markdownify }} {% comment %} `required` is already shown by the
+        `*` next to the field name, so it is counted out and skipped below. {% endcomment %} {%
+        assign extra_constraints = 0 %} {% for constraint in field.constraints %} {% unless
+        constraint[0] == "required" %} {% assign extra_constraints = extra_constraints | plus: 1 %}
+        {% endunless %} {% endfor %} {% if extra_constraints > 0 %}
         <strong>Constraints</strong>
         <ul>
-          {% for constraint in field.constraints %}
+          {% for constraint in field.constraints %}{% unless constraint[0] == "required" %}
           <li>{{ constraint[0] }}: <code>{{ constraint[1] | join: ", " }}</code></li>
-          {% endfor %}
+          {% endunless %}{% endfor %}
         </ul>
         {% endif %} {% if field.example and field.example != "" %}
         <p><strong>Example</strong>: <code>{{ field.example }}</code></p>
         {% endif %}
+        {% comment %}
+          The five SKOS relations differ only in their wording, so they are
+          rendered from one list. The link text is the term identifier: the full
+          URL is long enough to crowd out the definition it sits under.
+        {% endcomment %}
+        {% assign skos_relations = "exactMatch|closeMatch|broadMatch|narrowMatch|relatedMatch" | split: "|" %}
+        {% assign skos_wordings = "Same as|Close to|Narrower than|Broader than|Related to" | split: "|" %}
         <ul class="list-unstyled mb-0">
-          {% if field['skos:exactMatch'] %}
+          {% for relation in skos_relations %}{% assign skos_key = "skos:" | append: relation %}{% assign terms = field[skos_key] %}{% if terms %}
           <li class="small text-muted">
-            Same as {% for term in field['skos:exactMatch'] %}<a href="{{ term }}">{{ term }}</a> {%
-            unless forloop.last %}, {% endunless %}{% endfor %}
-          </li>
-          {% endif %} {% if field['skos:narrowMatch'] %}
-          <li class="small text-muted">
-            Broader than {% for term in field['skos:narrowMatch'] %}<a href="{{ term }}"
-              >{{ term }}</a
+            {{ skos_wordings[forloop.index0] }} {% for term in terms %}{% assign url = term | strip
+            %}{% assign identifier = url | split: "/" | last %}<a href="{{ url }}"
+              >{% if url contains "rs.tdwg.org/dwc/terms" %}dwc:{% endif %}{{ identifier }}</a
             >{% unless forloop.last %}, {% endunless %}{% endfor %}
           </li>
-          {% endif %} {% if field['skos:broadMatch'] %}
-          <li class="small text-muted">
-            Narrower than {% for term in field['skos:broadMatch'] %}<a href="{{ term }}">
-              {{ term }}</a
-            >{% unless forloop.last %}, {% endunless %}{% endfor %}
-          </li>
-          {% endif %} {% if field['skos:relatedMatch'] %}
-          <li class="small text-muted">
-            Related to {% for term in field['skos:relatedMatch'] %}<a href="{{ term }}"
-              >{{ term }}</a
-            >{% unless forloop.last %}, {% endunless %}{% endfor %}
-          </li>
-          {% endif %} {% if field['skos:closeMatch'] %}
-          <li class="small text-muted">
-            Close to {% for term in field['skos:closeMatch'] %}<a href="{{ term }}">{{ term }}</a>{%
-            unless forloop.last %}, {% endunless %}{% endfor %}
-          </li>
-          {% endif %}
+          {% endif %}{% endfor %}
         </ul>
       </td>
       <td><span class="badge bg-secondary">{{ field.type }}</span></td>
