@@ -49,6 +49,13 @@ releases](https://github.com/GeoPressure/GeoLocator-DP/releases) in one place.
 - Remove the `unique` constraint on `tags.tag_id`, which duplicated the primary
   key.
 
+### Profile
+
+- Select the resource schema with `if`/`then` on the resource `name` rather
+  than `oneOf`. The accepted descriptors are unchanged, but a validation error
+  now names the property at fault instead of reporting that the whole resource
+  matched none of the branches.
+
 ### Repository
 
 - Add `example/datapackage.json` and `example/measurements.csv`.
