@@ -42,7 +42,7 @@
         "required": true
       },
       "example": "2020-03-01T22:00:00Z",
-      "skos:closeMatch": " http://vocab.nerc.ac.uk/collection/MVB/current/MVB000352"
+      "skos:closeMatch": "http://vocab.nerc.ac.uk/collection/MVB/current/MVB000352"
     },
     {
       "name": "latitude",
