@@ -231,6 +231,64 @@ def check_v2_spellings(schema_descriptors: Dict[Path, dict]) -> bool:
     return not encountered_errors
 
 
+def check_categories(schema_descriptors: Dict[Path, dict]) -> bool:
+    """Check `categories` and the `enum` constraint stay in step.
+
+    The standard says the values of a field "`MUST` exactly match one of the
+    values in `categories`" and that an `enum` alongside it `MUST` be a subset.
+    Both are declared here because no implementation enforces `categories` yet:
+    frictionless-py 5.19 accepts a value outside `categories` without an error,
+    so dropping `enum` would silently drop the validation.
+
+    Keeping both means they can drift, which is what this checks.
+    """
+    encountered_errors = False
+
+    for schema_path, descriptor in schema_descriptors.items():
+        for field in descriptor.get("fields", []):
+            if not isinstance(field, dict):
+                continue
+
+            categories = field.get("categories")
+            enum = field.get("constraints", {}).get("enum")
+            location = f"{schema_path.name}: `{field.get('name')}`"
+
+            if categories is None:
+                if enum is not None:
+                    print(f"✕ {location}: has an `enum` constraint but no `categories`")
+                    encountered_errors = True
+                continue
+
+            values = [
+                category.get("value") if isinstance(category, dict) else category
+                for category in categories
+            ]
+
+            if len(values) != len(set(map(str, values))):
+                print(f"✕ {location}: `categories` values are not unique")
+                encountered_errors = True
+
+            example = field.get("example")
+            if example is not None and example not in values:
+                print(
+                    f"✕ {location}: `example` {example!r} is not one of its `categories`"
+                )
+                encountered_errors = True
+
+            if enum is None:
+                print(f"✕ {location}: has `categories` but no `enum` constraint")
+                encountered_errors = True
+            elif list(enum) != values:
+                print(
+                    f"✕ {location}: `enum` and `categories` differ\n"
+                    f"\t   enum: {list(enum)}\n"
+                    f"\t   categories: {values}"
+                )
+                encountered_errors = True
+
+    return not encountered_errors
+
+
 def check_example_package(profile: dict) -> bool:
     """Validate example/datapackage.json against the GeoLocator DP profile.
 
@@ -320,6 +378,12 @@ if __name__ == "__main__":
     print("\nData Package v2 spellings")
     if check_v2_spellings(schema_descriptors):
         print("✔︎ table schemas use the v2 spelling of `fieldsMatch` and keys")
+    else:
+        encountered_errors = True
+
+    print("\nCategories")
+    if check_categories(schema_descriptors):
+        print("✔︎ `categories` and `enum` agree")
     else:
         encountered_errors = True
 
