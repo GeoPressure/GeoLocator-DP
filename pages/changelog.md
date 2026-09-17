@@ -48,6 +48,14 @@ releases](https://github.com/GeoPressure/GeoLocator-DP/releases) in one place.
   fields as arrays of strings, the Data Package v2 spelling.
 - Remove the `unique` constraint on `tags.tag_id`, which duplicated the primary
   key.
+- Declare [`categories`](https://datapackage.org/standard/table-schema/#categories)
+  on every categorical field, giving each allowed value a label. The EURING
+  `age_class` and `catching_method` codes were previously only partly
+  documented in prose. `measurements.sensor` also carries its vocabulary term
+  per category. The `enum` constraint is kept alongside, as the standard
+  allows, because no implementation enforces `categories` yet.
+- Fix `observations.sex` and `pressurepaths.type` examples, which were not
+  valid values of their own fields.
 
 ### Profile
 
@@ -59,7 +67,8 @@ releases](https://github.com/GeoPressure/GeoLocator-DP/releases) in one place.
 ### Repository
 
 - Show `primaryKey`, `foreignKeys`, `missingValues` and `fieldsMatch` on each
-  table page, and link SKOS terms by identifier rather than by URL.
+  table page, list `categories` with their labels, and link SKOS terms by
+  identifier rather than by URL.
 - Fix a broken SKOS link on `observations.datetime`, and restore `_data`
   symlink for the measurements schema so the website renders the schema the
   standard ships.
