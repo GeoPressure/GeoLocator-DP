@@ -217,5 +217,5 @@
       }
     }
   ],
-  "fieldsMatch": ["superset"]
+  "fieldsMatch": "superset"
 }

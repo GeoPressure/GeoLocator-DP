@@ -79,5 +79,5 @@
     }
   ],
   "primaryKey": ["tag_id", "stap_id"],
-  "fieldsMatch": ["superset"]
+  "fieldsMatch": "superset"
 }

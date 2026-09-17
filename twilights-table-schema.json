@@ -52,5 +52,5 @@
       }
     }
   ],
-  "fieldsMatch": ["superset"]
+  "fieldsMatch": "superset"
 }
