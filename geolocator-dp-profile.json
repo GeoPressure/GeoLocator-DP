@@ -28,7 +28,7 @@
           "items": {
             "oneOf": [
               {
-                "required": ["name", "path", "$schema"],
+                "required": ["name", "path", "type", "schema"],
                 "properties": {
                   "name": {
                     "description": "Identifier of the resource. See [Data Package specification](https://datapackage.org/standard/data-resource/#name).",
@@ -53,10 +53,22 @@
                     "pattern": "^.+\\.(csv|csv\\.gz|csv\\.zip|zip)(\\?.*)?(#.*)?$"
                   },
                   "$schema": {
-                    "description": "URL of the used GeoLocator DP Table Schema version. See [Data Package specification](https://datapackage.org/standard/data-resource/#dollar-schema).",
-                    "type": "string",
-                    "format": "uri",
-                    "pattern": "^https://raw\\.githubusercontent\\.com/GeoPressure/GeoLocator-DP/(?:(?:v\\d+\\.\\d+(?:\\.\\d+)?)|dev|(?:refs/tags/(?:v\\d+\\.\\d+(?:\\.\\d+)?|dev)))/.*-table-schema\\.json$"
+                    "description": "Profile of the resource descriptor. See [Data Package specification](https://datapackage.org/standard/data-resource/#dollar-schema).",
+                    "const": "https://datapackage.org/profiles/2.0/dataresource.json"
+                  },
+                  "schema": {
+                    "description": "Table Schema of the resource, either the URL of the used GeoLocator DP Table Schema version or an inline Table Schema descriptor. See [Data Package specification](https://datapackage.org/standard/data-resource/#schema).",
+                    "oneOf": [
+                      {
+                        "type": "string",
+                        "format": "uri",
+                        "pattern": "^https://raw\\.githubusercontent\\.com/GeoPressure/GeoLocator-DP/(?:(?:v\\d+\\.\\d+(?:\\.\\d+)?)|dev|(?:refs/tags/(?:v\\d+\\.\\d+(?:\\.\\d+)?|dev)))/.*-table-schema\\.json$"
+                      },
+                      {
+                        "type": "object",
+                        "required": ["fields"]
+                      }
+                    ]
                   }
                 }
               },
