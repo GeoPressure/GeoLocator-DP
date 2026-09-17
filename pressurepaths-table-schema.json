@@ -40,7 +40,7 @@
         "required": true,
         "enum": ["tag", "most_likely", "simulation", "geopressureviz"]
       },
-      "example": "3"
+      "example": "most_likely"
     },
     {
       "name": "lat",

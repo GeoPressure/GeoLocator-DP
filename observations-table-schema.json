@@ -187,7 +187,7 @@
         "required": true,
         "enum": ["U", "M", "F"]
       },
-      "example": "female"
+      "example": "F"
     },
     {
       "name": "condition",
