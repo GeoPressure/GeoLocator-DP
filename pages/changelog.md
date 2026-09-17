@@ -58,6 +58,11 @@ releases](https://github.com/GeoPressure/GeoLocator-DP/releases) in one place.
 
 ### Repository
 
+- Show `primaryKey`, `foreignKeys`, `missingValues` and `fieldsMatch` on each
+  table page, and link SKOS terms by identifier rather than by URL.
+- Fix a broken SKOS link on `observations.datetime`, and restore `_data`
+  symlink for the measurements schema so the website renders the schema the
+  standard ships.
 - Add `example/datapackage.json` and `example/measurements.csv`.
 - Validate the example package, and the spelling of `fieldsMatch` and of the
   keys, in `tests/validate_profile_and_schemas.py`.
