@@ -27,6 +27,28 @@
       "name": "observation_type",
       "description": "Type of observation.\n - `equipment`: Attachment of the tag to the bird. If you equip a new tag at the same time as retrieving an old one from the same bird, create two dedicated rows in the dataset: one for retrieval and one for equipment.\n - `retrieval`: Retrieval of the data, generally through recapture and tag removal, but it can also happen through remote download readout methods (see [`tags.readout_method`](/GeoLocator-DP/core/tags#readout_method)).\n - `capture`: General case of capturing a bird while neither deploying nor retrieving a tag. This option covers (1) recapturing a bird without a device (choose `missing` in `device_status`), (2) a capture before `equipment` or after `retrieval`, and (3) captures of individuals from the control group. Recapture/retrap are not hard-coded in the dataset, but inferred from consecutive captures of the same `ring_number`.\n - `sighting`: Known presence of the bird on a date and location outside ringing (e.g., direct field observation with a color ring).\n - `other`: Any other observation type. Avoid using this; if used, always provide [`observation_comments`](/GeoLocator-DP/core/observations#observation_comments).",
       "type": "string",
+      "categories": [
+        {
+          "value": "equipment",
+          "label": "Equipment"
+        },
+        {
+          "value": "retrieval",
+          "label": "Retrieval"
+        },
+        {
+          "value": "capture",
+          "label": "Capture"
+        },
+        {
+          "value": "sighting",
+          "label": "Sighting"
+        },
+        {
+          "value": "other",
+          "label": "Other"
+        }
+      ],
       "constraints": {
         "required": true,
         "enum": ["equipment", "retrieval", "capture", "sighting", "other"]
@@ -90,6 +112,24 @@
       "name": "device_status",
       "description": "Status of the tag itself (not the data inside the tag):\n - `present`: Tag on the bird.\n - `none`: No tag on the bird and this is expected (e.g., pre-equipment, post-removal, or control group). Only for `observation_type='capture'`.\n - `missing`: Tag lost by the bird. Only for `observation_type='capture'`. If a new tag is deployed on a bird that lost its previous tag, create two rows: one `capture`-`missing` and one `equipment`-`present`.\n - `unknown`: Only for `observation_type='sighting'`.\n\nCan only be `present` for `observation_type` `equipment` or `retrieval`.",
       "type": "string",
+      "categories": [
+        {
+          "value": "present",
+          "label": "Present"
+        },
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "missing",
+          "label": "Missing"
+        },
+        {
+          "value": "unknown",
+          "label": "Unknown"
+        }
+      ],
       "skos:relatedMatch": "http://vocab.nerc.ac.uk/collection/MVB/current/MVB000084",
       "constraints": {
         "required": false,
@@ -112,8 +152,90 @@
     },
     {
       "name": "catching_method",
-      "description": "Catching method according to [EURING Exchange Code](https://euring.org/files/documents/E2020ExchangeCodeV201.pdf#page=12). Generally, one of:\n - `M`: *m*ist-net\n - `N`: on *n*est\n - `Z`: unknown",
+      "description": "Catching method according to [EURING Exchange Code](https://euring.org/files/documents/E2020ExchangeCodeV201.pdf#page=12). Most records use `M` (mist net), `N` (on nest) or `Z` (unknown).",
       "type": "string",
+      "categories": [
+        {
+          "value": "-",
+          "label": "Not applicable, the bird was not caught"
+        },
+        {
+          "value": "A",
+          "label": "Actively triggered trap (by ringer)"
+        },
+        {
+          "value": "B",
+          "label": "Trap automatically triggered by the bird"
+        },
+        {
+          "value": "C",
+          "label": "Cannon net or rocket net"
+        },
+        {
+          "value": "D",
+          "label": "Dazzling"
+        },
+        {
+          "value": "F",
+          "label": "Caught in flight by anything other than a static mist net"
+        },
+        {
+          "value": "G",
+          "label": "Net just under the water surface, lifted as waterfowl swim over it"
+        },
+        {
+          "value": "H",
+          "label": "By hand, with or without hook or noose"
+        },
+        {
+          "value": "L",
+          "label": "Clap net"
+        },
+        {
+          "value": "M",
+          "label": "Mist net"
+        },
+        {
+          "value": "N",
+          "label": "On nest, any method"
+        },
+        {
+          "value": "O",
+          "label": "Any other system"
+        },
+        {
+          "value": "P",
+          "label": "Phut net"
+        },
+        {
+          "value": "R",
+          "label": "Rounded up whilst flightless"
+        },
+        {
+          "value": "S",
+          "label": "Bal-chatri or other snare device"
+        },
+        {
+          "value": "T",
+          "label": "Helgoland trap or duck decoy"
+        },
+        {
+          "value": "U",
+          "label": "Dutch net for Pluvialis apricaria"
+        },
+        {
+          "value": "V",
+          "label": "Roosting in cavity"
+        },
+        {
+          "value": "W",
+          "label": "Passive walk-in or maze trap"
+        },
+        {
+          "value": "Z",
+          "label": "Unknown"
+        }
+      ],
       "constraints": {
         "required": false,
         "enum": [
@@ -144,8 +266,82 @@
     },
     {
       "name": "age_class",
-      "description": "Life stage of the bird according to the age class in [EURING Exchange Code](https://euring.org/files/documents/E2020ExchangeCodeV201.pdf#page=14). \n- `0`: Unknown\n- `1`: Pullus\n- `2`: Full-grown\n- `3`: 1yr\n- `4`: >1yr\n- `5`: 2yr\n- `6`: >2yr\n- ...",
+      "description": "Life stage of the bird according to the age class in [EURING Exchange Code](https://euring.org/files/documents/E2020ExchangeCodeV201.pdf#page=14). The code describes the plumage of the bird rather than its age in years.",
       "type": "string",
+      "categories": [
+        {
+          "value": "0",
+          "label": "Age unknown"
+        },
+        {
+          "value": "1",
+          "label": "Pullus: nestling or chick, unable to fly freely"
+        },
+        {
+          "value": "2",
+          "label": "Full-grown, year of hatching unknown"
+        },
+        {
+          "value": "3",
+          "label": "First-year"
+        },
+        {
+          "value": "4",
+          "label": "After first-year"
+        },
+        {
+          "value": "5",
+          "label": "2nd year"
+        },
+        {
+          "value": "6",
+          "label": "After 2nd year"
+        },
+        {
+          "value": "7",
+          "label": "3rd year"
+        },
+        {
+          "value": "8",
+          "label": "After 3rd year"
+        },
+        {
+          "value": "9",
+          "label": "4th year"
+        },
+        {
+          "value": "A",
+          "label": "After 4th year"
+        },
+        {
+          "value": "B",
+          "label": "5th year"
+        },
+        {
+          "value": "C",
+          "label": "After 5th year"
+        },
+        {
+          "value": "D",
+          "label": "6th year"
+        },
+        {
+          "value": "E",
+          "label": "After 6th year"
+        },
+        {
+          "value": "F",
+          "label": "7th year"
+        },
+        {
+          "value": "G",
+          "label": "After 7th year"
+        },
+        {
+          "value": "H",
+          "label": "8th year"
+        }
+      ],
       "constraints": {
         "required": true,
         "enum": [
@@ -183,6 +379,20 @@
         "https://vocab.nerc.ac.uk/collection/MVB/current/MVB000023"
       ],
       "type": "string",
+      "categories": [
+        {
+          "value": "U",
+          "label": "Unknown"
+        },
+        {
+          "value": "M",
+          "label": "Male"
+        },
+        {
+          "value": "F",
+          "label": "Female"
+        }
+      ],
       "constraints": {
         "required": true,
         "enum": ["U", "M", "F"]
@@ -193,6 +403,24 @@
       "name": "condition",
       "description": "Condition of the bird following a simplified version of the [EURING Exchange Code](https://euring.org/files/documents/E2020ExchangeCodeV201.pdf#page=23). Assumed to be `alive` if not provided.",
       "type": "string",
+      "categories": [
+        {
+          "value": "alive",
+          "label": "Alive and probably healthy"
+        },
+        {
+          "value": "unhealthy",
+          "label": "Found sick, wounded or otherwise unhealthy"
+        },
+        {
+          "value": "dead",
+          "label": "Dead"
+        },
+        {
+          "value": "unknown",
+          "label": "Unknown"
+        }
+      ],
       "constraints": {
         "required": false,
         "enum": ["alive", "unhealthy", "dead", "unknown"]

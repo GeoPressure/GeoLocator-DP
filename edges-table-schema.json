@@ -17,6 +17,24 @@
       "name": "type",
       "description": "Same as [`paths.type`](/GeoLocator-DP/geopressurer/paths#type). One of: `tag`, `most_likely`, `simulation` or `geopressureviz`.",
       "type": "string",
+      "categories": [
+        {
+          "value": "tag",
+          "label": "Tag"
+        },
+        {
+          "value": "most_likely",
+          "label": "Most likely"
+        },
+        {
+          "value": "simulation",
+          "label": "Simulation"
+        },
+        {
+          "value": "geopressureviz",
+          "label": "GeoPressureViz"
+        }
+      ],
       "constraints": {
         "required": true,
         "enum": ["tag", "most_likely", "simulation", "geopressureviz"]
