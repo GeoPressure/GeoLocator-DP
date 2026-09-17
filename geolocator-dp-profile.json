@@ -48,7 +48,7 @@
                   }
                 },
                 "then": {
-                  "required": ["name", "path", "type", "schema"],
+                  "required": ["$schema", "name", "path", "type", "schema"],
                   "properties": {
                     "name": {
                       "description": "Identifier of the resource. See [Data Package specification](https://datapackage.org/standard/data-resource/#name).",
@@ -73,7 +73,7 @@
                       "pattern": "^.+\\.(csv|csv\\.gz|csv\\.zip|zip)(\\?.*)?(#.*)?$"
                     },
                     "$schema": {
-                      "description": "Profile of the resource descriptor. See [Data Package specification](https://datapackage.org/standard/data-resource/#dollar-schema).",
+                      "description": "Profile of the resource descriptor, which must be the Data Package v2 data resource profile. See [Data Package specification](https://datapackage.org/standard/data-resource/#dollar-schema).",
                       "const": "https://datapackage.org/profiles/2.0/dataresource.json"
                     },
                     "schema": {
