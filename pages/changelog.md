@@ -33,8 +33,11 @@ releases](https://github.com/GeoPressure/GeoLocator-DP/releases) in one place.
   descriptor.
 - Require `type` on tabular resources, which must be `table`. It replaces the
   Data Package v1 `profile: "tabular-data-resource"`.
-- `$schema` remains optional and, when present, must be
-  `https://datapackage.org/profiles/2.0/dataresource.json`.
+- Require `$schema` on tabular resources, which must be
+  `https://datapackage.org/profiles/2.0/dataresource.json`. Implementations read
+  it to decide which version of the standard a resource follows: without it,
+  `frictionless::version()` reports a resource as Data Package v1 even inside a
+  package that declares v2.
 
 ### Table schemas
 
