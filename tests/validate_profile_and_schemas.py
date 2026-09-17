@@ -2,13 +2,16 @@
 
 import sys
 import json
+import re
 from pathlib import Path
 from typing import Dict, List, Optional
 from frictionless import Schema
+from jsonschema import Draft202012Validator
 
 THIS_SCRIPT_PATH = Path(__file__).parent
 REPOSITORY_ROOT_PATH = THIS_SCRIPT_PATH / ".."
 PROFILE_PATH = REPOSITORY_ROOT_PATH / "geolocator-dp-profile.json"
+EXAMPLE_PACKAGE_PATH = REPOSITORY_ROOT_PATH / "example" / "datapackage.json"
 TABLE_SCHEMA_PATHS = [
     REPOSITORY_ROOT_PATH / "observations-table-schema.json",
     REPOSITORY_ROOT_PATH / "tags-table-schema.json",
@@ -164,6 +167,56 @@ def check_schema_coherence(schema_descriptors: Dict[Path, dict]) -> bool:
     return not encountered_errors
 
 
+def check_example_package(profile: dict) -> bool:
+    """Validate example/datapackage.json against the GeoLocator DP profile.
+
+    Only the GeoLocator DP specific half of the profile (`allOf[1]`) is applied,
+    so the check stays offline and deterministic; the other half is a `$ref` to
+    the Data Package profile on datapackage.org.
+    """
+    encountered_errors = False
+
+    descriptor = load_json(EXAMPLE_PACKAGE_PATH)
+    if descriptor is None:
+        print("✕ valid JSON")
+        return False
+    print("✔︎ valid JSON")
+
+    validator = Draft202012Validator(profile["allOf"][1])
+    errors = sorted(validator.iter_errors(descriptor), key=lambda err: list(err.path))
+    if errors:
+        print("✕ conforms to the GeoLocator DP profile, errors:")
+        for err in errors:
+            location = "/".join(str(part) for part in err.path) or "<root>"
+            print(f"\t - {location}: {err.message}")
+        encountered_errors = True
+    else:
+        print("✔︎ conforms to the GeoLocator DP profile")
+
+    # Every referenced file and table schema must exist in this repository, which
+    # catches typos while the version in the URL is not tagged yet.
+    for resource in descriptor.get("resources", []):
+        path = resource.get("path")
+        if isinstance(path, str) and not (EXAMPLE_PACKAGE_PATH.parent / path).exists():
+            print(f"✕ resource `{resource.get('name')}`: missing file `{path}`")
+            encountered_errors = True
+
+        schema = resource.get("schema")
+        if isinstance(schema, str):
+            schema_file = REPOSITORY_ROOT_PATH / re.sub(r"^.*/", "", schema)
+            if not schema_file.exists():
+                print(
+                    f"✕ resource `{resource.get('name')}`: `schema` points at "
+                    f"`{schema_file.name}`, which does not exist in this repository"
+                )
+                encountered_errors = True
+
+    if not encountered_errors:
+        print("✔︎ resource files and table schemas exist")
+
+    return not encountered_errors
+
+
 if __name__ == "__main__":
     encountered_errors = False
     schema_descriptors: Dict[Path, dict] = {}
@@ -198,6 +251,10 @@ if __name__ == "__main__":
     if check_schema_coherence(schema_descriptors):
         print("✔︎ schema coherence checks passed")
     else:
+        encountered_errors = True
+
+    print(f"\n{EXAMPLE_PACKAGE_PATH.parent.name}/{EXAMPLE_PACKAGE_PATH.name}")
+    if profile_json is None or not check_example_package(profile_json):
         encountered_errors = True
 
     if encountered_errors:

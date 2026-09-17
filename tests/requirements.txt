@@ -1,2 +1,3 @@
 # Minimal dependencies for tests/validate_profile_and_schemas.py
 frictionless>=5.13.1
+jsonschema>=4.18
