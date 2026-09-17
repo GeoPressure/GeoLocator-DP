@@ -9,8 +9,7 @@
       "description": "Unique identifier of the tag.",
       "type": "string",
       "constraints": {
-        "required": true,
-        "unique": true
+        "required": true
       },
       "skos:exactMatch": "https://vocab.nerc.ac.uk/collection/MVB/current/MVB000181/",
       "example": "18LX"
@@ -125,6 +124,6 @@
     }
   ],
   "missingValues": ["", "NA"],
-  "primaryKey": "tag_id",
+  "primaryKey": ["tag_id"],
   "fieldsMatch": "superset"
 }
