@@ -18,6 +18,11 @@ GeoLocator DP is a Data Package profile for geolocator data (raw measurements, f
 
 ## Local Development
 
+This site uses the GitHub Pages Jekyll environment, which currently runs on
+Ruby 3.3.4. The project includes a `.ruby-version` file for `chruby` and other
+Ruby version managers. Confirm that `ruby --version` reports Ruby 3.3.4 before
+installing dependencies.
+
 Install Ruby dependencies:
 
 ```bash
