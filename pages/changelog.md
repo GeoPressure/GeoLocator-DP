@@ -46,6 +46,17 @@ releases](https://github.com/GeoPressure/GeoLocator-DP/releases) in one place.
   came from an error in the published Table Schema profile
   ([frictionlessdata/datapackage#965](https://github.com/frictionlessdata/datapackage/issues/965)),
   fixed in Data Package v2.1.
+- Set [`fieldsMatch`](https://datapackage.org/standard/table-schema/#fieldsMatch)
+  to `partial` on `tags`, so that a package may carry extra columns on it, as
+  `pressurepaths` already allowed. The other six tables keep `superset`, which
+  lets a table leave out columns but not add them.
+  `fieldsMatch` says nothing about which columns are *required*: on its own it
+  lets a table omit any column it declares, including one carrying a `required`
+  constraint, because the standard cannot yet express "the required columns
+  must be present, the optional ones may be absent"
+  ([frictionlessdata/datapackage#1126](https://github.com/frictionlessdata/datapackage/issues/1126)).
+  Presence of the required columns is therefore checked separately, by
+  [`GeoLocatoR::validate_gldp()`](https://geopressure.com/GeoLocatoR/reference/validate_gldp.html).
 - Write [`primaryKey`](https://datapackage.org/standard/table-schema/#primaryKey)
   and [`foreignKeys`](https://datapackage.org/standard/table-schema/#foreignKeys)
   fields as arrays of strings, the Data Package v2 spelling.
@@ -71,7 +82,9 @@ releases](https://github.com/GeoPressure/GeoLocator-DP/releases) in one place.
 
 - Show `primaryKey`, `foreignKeys`, `missingValues` and `fieldsMatch` on each
   table page, list `categories` with their labels, and link SKOS terms by
-  identifier rather than by URL.
+  identifier rather than by URL. Say on each table page which columns may be
+  left out and which must be present, rather than leaving the `*` marking a
+  required column unexplained.
 - Fix a broken SKOS link on `observations.datetime`, and restore `_data`
   symlink for the measurements schema so the website renders the schema the
   standard ships.

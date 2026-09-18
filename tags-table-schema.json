@@ -125,5 +125,5 @@
   ],
   "missingValues": ["", "NA"],
   "primaryKey": ["tag_id"],
-  "fieldsMatch": "superset"
+  "fieldsMatch": "partial"
 }

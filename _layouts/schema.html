@@ -47,12 +47,20 @@ table_schema_id = table_schema.name %} {{ table_schema.description | markdownify
   </li>
   {% endif %} {% if table_schema.fieldsMatch == "partial" %}
   <li>
-    <strong>Other columns</strong>: columns not listed below are allowed and kept as they are.
+    <strong>Other columns</strong>: any column listed below may be left out, and columns not listed
+    below are allowed and kept as they are.
   </li>
   {% elsif table_schema.fieldsMatch == "superset" %}
   <li>
     <strong>Other columns</strong>: only the columns listed below are allowed. Any column may be
     left out.
+  </li>
+  {% endif %} {% assign required_count = 0 %} {% for field in table_schema.fields %} {% if
+  field.constraints.required %}{% assign required_count = required_count | plus: 1 %}{% endif %} {%
+  endfor %} {% if required_count > 0 %}
+  <li>
+    <strong>Required columns</strong>: those marked <code>*</code> must be present and must hold a
+    value in every row, whatever the rule above allows.
   </li>
   {% endif %}
 </ul>
