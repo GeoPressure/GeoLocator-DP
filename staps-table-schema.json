@@ -71,13 +71,13 @@
   "missingValues": ["", "NA"],
   "foreignKeys": [
     {
-      "fields": "tag_id",
+      "fields": ["tag_id"],
       "reference": {
         "resource": "tags",
-        "fields": "tag_id"
+        "fields": ["tag_id"]
       }
     }
   ],
   "primaryKey": ["tag_id", "stap_id"],
-  "fieldsMatch": ["superset"]
+  "fieldsMatch": "superset"
 }

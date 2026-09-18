@@ -15,8 +15,79 @@
     },
     {
       "name": "sensor",
-      "description": "Sensor type.\n - `light`: Light-level values measured by a solar geolocator. Range and units may vary by provider and tag settings. <br/><span class='small text-muted'>Same as <a href='https://vocab.nerc.ac.uk/collection/MVB/current/MVB000139/'>https://vocab.nerc.ac.uk/collection/MVB/current/MVB000139/</a></span>\n - `pressure`: Atmospheric pressure in hPa (or mbar). <br/><span class='small text-muted'>Same as <a href='https://vocab.nerc.ac.uk/collection/MVB/current/MVB000055/'>https://vocab.nerc.ac.uk/collection/MVB/current/MVB000055/</a></span>\n - `activity`: Measure of movement performed by the bird, computed from acceleration sensors. Range and computation method may vary by tag provider, model, settings, and placement on the animal. In general, higher values indicate more activity. Typically computed as the cumulative sum of the absolute difference of acceleration along the z-axis. See [doi:10.1186/s40462-018-0137-1](https://doi.org/10.1186/s40462-018-0137-1) (SOI), [doi:10.1111/jav.01068](https://doi.org/10.1111/jav.01068) (Lund), and the [migratetech report](https://www.migratetech.co.uk/IntigeoSummary.pdf) for more details. <br/><span class='small text-muted'>Same as <a href='https://vocab.nerc.ac.uk/collection/MVB/current/MVB000114/'>https://vocab.nerc.ac.uk/collection/MVB/current/MVB000114/</a></span>\n - `mean_acceleration_z`: Mean acceleration along the z-axis, computed from acceleration sensors. Mainly used by SOI devices. This metric is sometimes used as a proxy for pitch and was named `pitch` in GeoLocator DP versions earlier than v1.0.\n - `temperature_external`: Temperature measured by the tag sensor pointing outward from the animal (air temperature). This typically corresponds to the main external temperature sensor. Units: degrees Celsius. <br/><span class='small text-muted'>Same as <a href='https://vocab.nerc.ac.uk/collection/MVB/current/MVB000104/'>https://vocab.nerc.ac.uk/collection/MVB/current/MVB000104/</a></span>\n - `temperature_internal`: Temperature measured by the tag sensor located between the tag and the animal (body temperature). Units: degrees Celsius. <br/><span class='small text-muted'>Same as <a href='https://vocab.nerc.ac.uk/collection/MVB/current/MVB000256/'>https://vocab.nerc.ac.uk/collection/MVB/current/MVB000256/</a></span>\n - `acceleration_x`: Raw acceleration values provided by the tag for the X axis. Units: m/s^2. <br/><span class='small text-muted'>Same as <a href='https://vocab.nerc.ac.uk/collection/MVB/current/MVB000006/'>https://vocab.nerc.ac.uk/collection/MVB/current/MVB000006/</a></span>\n - `acceleration_y`: Raw acceleration values provided by the tag for the Y axis. Units: m/s^2. <br/><span class='small text-muted'>Same as <a href='https://vocab.nerc.ac.uk/collection/MVB/current/MVB000007/'>https://vocab.nerc.ac.uk/collection/MVB/current/MVB000007/</a></span>\n - `acceleration_z`: Raw acceleration values provided by the tag for the Z axis. Units: m/s^2. <br/><span class='small text-muted'>Same as <a href='https://vocab.nerc.ac.uk/collection/MVB/current/MVB000008/'>https://vocab.nerc.ac.uk/collection/MVB/current/MVB000008/</a></span>\n - `magnetic_x`: Magnetic field strength measured by the magnetometer for the X axis. Units: microtesla. <br/><span class='small text-muted'>Same as <a href='https://vocab.nerc.ac.uk/collection/MVB/current/MVB000258/'>https://vocab.nerc.ac.uk/collection/MVB/current/MVB000258/</a></span>\n - `magnetic_y`: Magnetic field strength measured by the magnetometer for the Y axis. Units: microtesla. <br/><span class='small text-muted'>Same as <a href='https://vocab.nerc.ac.uk/collection/MVB/current/MVB000259/'>https://vocab.nerc.ac.uk/collection/MVB/current/MVB000259/</a></span>\n - `magnetic_z`: Magnetic field strength measured by the magnetometer for the Z axis. Units: microtesla. <br/><span class='small text-muted'>Same as <a href='https://vocab.nerc.ac.uk/collection/MVB/current/MVB000260/'>https://vocab.nerc.ac.uk/collection/MVB/current/MVB000260/</a></span>\n - `wet_count`: Wet count during a measurement interval from the wet-dry sensor. Units are usually device-specific. <br/><span class='small text-muted'>Same as <a href='https://vocab.nerc.ac.uk/collection/MVB/current/MVB000213/'>https://vocab.nerc.ac.uk/collection/MVB/current/MVB000213/</a></span>\n - `conductivity`: Conductivity measured by the wet-dry sensor. Unit varies by model. <br/><span class='small text-muted'>Same as <a href='https://vocab.nerc.ac.uk/collection/MVB/current/MVB000071/'>https://vocab.nerc.ac.uk/collection/MVB/current/MVB000071/</a></span>",
+      "description": "Sensor type.\n - `light`: Light-level values measured by a solar geolocator. Range and units may vary by provider and tag settings.\n - `pressure`: Atmospheric pressure in hPa (or mbar).\n - `activity`: Measure of movement performed by the bird, computed from acceleration sensors. Range and computation method may vary by tag provider, model, settings, and placement on the animal. In general, higher values indicate more activity. Typically computed as the cumulative sum of the absolute difference of acceleration along the z-axis. See [doi:10.1186/s40462-018-0137-1](https://doi.org/10.1186/s40462-018-0137-1) (SOI), [doi:10.1111/jav.01068](https://doi.org/10.1111/jav.01068) (Lund), and the [migratetech report](https://www.migratetech.co.uk/IntigeoSummary.pdf) for more details.\n - `mean_acceleration_z`: Mean acceleration along the z-axis, computed from acceleration sensors. Mainly used by SOI devices. This metric is sometimes used as a proxy for pitch and was named `pitch` in GeoLocator DP versions earlier than v1.0.\n - `temperature_external`: Temperature measured by the tag sensor pointing outward from the animal (air temperature). This typically corresponds to the main external temperature sensor. Units: degrees Celsius.\n - `temperature_internal`: Temperature measured by the tag sensor located between the tag and the animal (body temperature). Units: degrees Celsius.\n - `acceleration_x`: Raw acceleration values provided by the tag for the X axis. Units: m/s^2.\n - `acceleration_y`: Raw acceleration values provided by the tag for the Y axis. Units: m/s^2.\n - `acceleration_z`: Raw acceleration values provided by the tag for the Z axis. Units: m/s^2.\n - `magnetic_x`: Magnetic field strength measured by the magnetometer for the X axis. Units: microtesla.\n - `magnetic_y`: Magnetic field strength measured by the magnetometer for the Y axis. Units: microtesla.\n - `magnetic_z`: Magnetic field strength measured by the magnetometer for the Z axis. Units: microtesla.\n - `wet_count`: Wet count during a measurement interval from the wet-dry sensor. Units are usually device-specific.\n - `conductivity`: Conductivity measured by the wet-dry sensor. Unit varies by model.",
       "type": "string",
+      "categories": [
+        {
+          "value": "light",
+          "label": "Light",
+          "skos:exactMatch": "https://vocab.nerc.ac.uk/collection/MVB/current/MVB000139/"
+        },
+        {
+          "value": "pressure",
+          "label": "Pressure",
+          "skos:exactMatch": "https://vocab.nerc.ac.uk/collection/MVB/current/MVB000055/"
+        },
+        {
+          "value": "activity",
+          "label": "Activity",
+          "skos:exactMatch": "https://vocab.nerc.ac.uk/collection/MVB/current/MVB000114/"
+        },
+        {
+          "value": "mean_acceleration_z",
+          "label": "Mean acceleration (z-axis)"
+        },
+        {
+          "value": "temperature_internal",
+          "label": "Internal temperature",
+          "skos:exactMatch": "https://vocab.nerc.ac.uk/collection/MVB/current/MVB000256/"
+        },
+        {
+          "value": "temperature_external",
+          "label": "External temperature",
+          "skos:exactMatch": "https://vocab.nerc.ac.uk/collection/MVB/current/MVB000104/"
+        },
+        {
+          "value": "acceleration_x",
+          "label": "Acceleration (x-axis)",
+          "skos:exactMatch": "https://vocab.nerc.ac.uk/collection/MVB/current/MVB000006/"
+        },
+        {
+          "value": "acceleration_y",
+          "label": "Acceleration (y-axis)",
+          "skos:exactMatch": "https://vocab.nerc.ac.uk/collection/MVB/current/MVB000007/"
+        },
+        {
+          "value": "acceleration_z",
+          "label": "Acceleration (z-axis)",
+          "skos:exactMatch": "https://vocab.nerc.ac.uk/collection/MVB/current/MVB000008/"
+        },
+        {
+          "value": "magnetic_x",
+          "label": "Magnetic field (x-axis)",
+          "skos:exactMatch": "https://vocab.nerc.ac.uk/collection/MVB/current/MVB000258/"
+        },
+        {
+          "value": "magnetic_y",
+          "label": "Magnetic field (y-axis)",
+          "skos:exactMatch": "https://vocab.nerc.ac.uk/collection/MVB/current/MVB000259/"
+        },
+        {
+          "value": "magnetic_z",
+          "label": "Magnetic field (z-axis)",
+          "skos:exactMatch": "https://vocab.nerc.ac.uk/collection/MVB/current/MVB000260/"
+        },
+        {
+          "value": "wet_count",
+          "label": "Wet count",
+          "skos:exactMatch": "https://vocab.nerc.ac.uk/collection/MVB/current/MVB000213/"
+        },
+        {
+          "value": "conductivity",
+          "label": "Conductivity",
+          "skos:exactMatch": "https://vocab.nerc.ac.uk/collection/MVB/current/MVB000071/"
+        }
+      ],
       "constraints": {
         "required": true,
         "enum": [
@@ -76,12 +147,12 @@
   "missingValues": ["", "NA"],
   "foreignKeys": [
     {
-      "fields": "tag_id",
+      "fields": ["tag_id"],
       "reference": {
         "resource": "tags",
-        "fields": "tag_id"
+        "fields": ["tag_id"]
       }
     }
   ],
-  "fieldsMatch": ["superset"]
+  "fieldsMatch": "superset"
 }

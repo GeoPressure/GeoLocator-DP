@@ -17,6 +17,24 @@
       "name": "type",
       "description": "One of:\n - `tag`: Created with [`tag2path()`](https://geopressure.com/GeoPressureR/reference/tag2path) from a likelihood map.\n - `most_likely`: Created with [`graph_most_likely()`](https://geopressure.com/GeoPressureR/reference/graph_most_likely.html).\n - `simulation`: Created by [`graph_simulation()`](https://geopressure.com/GeoPressureR/reference/graph_simulation).\n - `geopressureviz`: Created by [`geopressureviz()`](https://geopressure.com/GeoPressureR/reference/geopressureviz).",
       "type": "string",
+      "categories": [
+        {
+          "value": "tag",
+          "label": "Tag"
+        },
+        {
+          "value": "most_likely",
+          "label": "Most likely"
+        },
+        {
+          "value": "simulation",
+          "label": "Simulation"
+        },
+        {
+          "value": "geopressureviz",
+          "label": "GeoPressureViz"
+        }
+      ],
       "constraints": {
         "required": true,
         "enum": ["tag", "most_likely", "simulation", "geopressureviz"]
@@ -70,10 +88,10 @@
   "missingValues": ["", "NA"],
   "foreignKeys": [
     {
-      "fields": "tag_id",
+      "fields": ["tag_id"],
       "reference": {
         "resource": "tags",
-        "fields": "tag_id"
+        "fields": ["tag_id"]
       }
     },
     {
@@ -84,5 +102,5 @@
       }
     }
   ],
-  "fieldsMatch": ["superset"]
+  "fieldsMatch": "superset"
 }

@@ -1,0 +1,7 @@
+tag_id,sensor,datetime,value,label
+28CC,pressure,2020-08-20T08:00:00Z,1008.4,
+28CC,pressure,2020-08-20T08:30:00Z,1008.1,
+28CC,acceleration,2020-08-20T08:00:00Z,12,
+28CC,light,2020-08-20T08:00:00Z,45.2,
+30II,pressure,2020-08-21T08:00:00Z,1006.9,
+30II,light,2020-08-21T08:00:00Z,38.7,

@@ -2,13 +2,16 @@
 
 import sys
 import json
+import re
 from pathlib import Path
 from typing import Dict, List, Optional
 from frictionless import Schema
+from jsonschema import Draft202012Validator
 
 THIS_SCRIPT_PATH = Path(__file__).parent
 REPOSITORY_ROOT_PATH = THIS_SCRIPT_PATH / ".."
 PROFILE_PATH = REPOSITORY_ROOT_PATH / "geolocator-dp-profile.json"
+EXAMPLE_PACKAGE_PATH = REPOSITORY_ROOT_PATH / "example" / "datapackage.json"
 TABLE_SCHEMA_PATHS = [
     REPOSITORY_ROOT_PATH / "observations-table-schema.json",
     REPOSITORY_ROOT_PATH / "tags-table-schema.json",
@@ -164,6 +167,178 @@ def check_schema_coherence(schema_descriptors: Dict[Path, dict]) -> bool:
     return not encountered_errors
 
 
+FIELDS_MATCH_VALUES = {"exact", "equal", "subset", "superset", "partial"}
+
+
+def _is_array_of_strings(value) -> bool:
+    return isinstance(value, list) and all(isinstance(item, str) for item in value)
+
+
+def check_v2_spellings(schema_descriptors: Dict[Path, dict]) -> bool:
+    """Check the table schemas use the Data Package v2 spelling of their keys.
+
+    The published `tableschema.json` profile is more permissive than the
+    standard on both counts, so these are checked here rather than left to
+    `Schema.validate_descriptor()`:
+
+    - `fieldsMatch` `MUST` be a string. The profile types it as an array, which
+      is an error being fixed in v2.1
+      (frictionlessdata/datapackage#965).
+    - `primaryKey` and foreign key fields "should now always be an array of
+      strings, not a string". The profile still allows the v1 string form.
+    """
+    encountered_errors = False
+
+    for schema_path, descriptor in schema_descriptors.items():
+        name = schema_path.name
+
+        fields_match = descriptor.get("fieldsMatch")
+        if fields_match is not None:
+            if not isinstance(fields_match, str):
+                print(
+                    f"✕ {name}: `fieldsMatch` must be a string, got "
+                    f"{type(fields_match).__name__} `{fields_match}`"
+                )
+                encountered_errors = True
+            elif fields_match not in FIELDS_MATCH_VALUES:
+                print(f"✕ {name}: unknown `fieldsMatch` value `{fields_match}`")
+                encountered_errors = True
+
+        primary_key = descriptor.get("primaryKey")
+        if primary_key is not None and not _is_array_of_strings(primary_key):
+            print(
+                f"✕ {name}: `primaryKey` must be an array of strings, got `{primary_key}`"
+            )
+            encountered_errors = True
+
+        for index, foreign_key in enumerate(descriptor.get("foreignKeys", [])):
+            if not isinstance(foreign_key, dict):
+                continue
+
+            reference = foreign_key.get("reference")
+            candidates = [("fields", foreign_key.get("fields"))]
+            if isinstance(reference, dict):
+                candidates.append(("reference.fields", reference.get("fields")))
+
+            for label, fields in candidates:
+                if not _is_array_of_strings(fields):
+                    print(
+                        f"✕ {name}: `foreignKeys[{index}].{label}` must be an array "
+                        f"of strings, got `{fields}`"
+                    )
+                    encountered_errors = True
+
+    return not encountered_errors
+
+
+def check_categories(schema_descriptors: Dict[Path, dict]) -> bool:
+    """Check `categories` and the `enum` constraint stay in step.
+
+    The standard says the values of a field "`MUST` exactly match one of the
+    values in `categories`" and that an `enum` alongside it `MUST` be a subset.
+    Both are declared here because no implementation enforces `categories` yet:
+    frictionless-py 5.19 accepts a value outside `categories` without an error,
+    so dropping `enum` would silently drop the validation.
+
+    Keeping both means they can drift, which is what this checks.
+    """
+    encountered_errors = False
+
+    for schema_path, descriptor in schema_descriptors.items():
+        for field in descriptor.get("fields", []):
+            if not isinstance(field, dict):
+                continue
+
+            categories = field.get("categories")
+            enum = field.get("constraints", {}).get("enum")
+            location = f"{schema_path.name}: `{field.get('name')}`"
+
+            if categories is None:
+                if enum is not None:
+                    print(f"✕ {location}: has an `enum` constraint but no `categories`")
+                    encountered_errors = True
+                continue
+
+            values = [
+                category.get("value") if isinstance(category, dict) else category
+                for category in categories
+            ]
+
+            if len(values) != len(set(map(str, values))):
+                print(f"✕ {location}: `categories` values are not unique")
+                encountered_errors = True
+
+            example = field.get("example")
+            if example is not None and example not in values:
+                print(
+                    f"✕ {location}: `example` {example!r} is not one of its `categories`"
+                )
+                encountered_errors = True
+
+            if enum is None:
+                print(f"✕ {location}: has `categories` but no `enum` constraint")
+                encountered_errors = True
+            elif list(enum) != values:
+                print(
+                    f"✕ {location}: `enum` and `categories` differ\n"
+                    f"\t   enum: {list(enum)}\n"
+                    f"\t   categories: {values}"
+                )
+                encountered_errors = True
+
+    return not encountered_errors
+
+
+def check_example_package(profile: dict) -> bool:
+    """Validate example/datapackage.json against the GeoLocator DP profile.
+
+    Only the GeoLocator DP specific half of the profile (`allOf[1]`) is applied,
+    so the check stays offline and deterministic; the other half is a `$ref` to
+    the Data Package profile on datapackage.org.
+    """
+    encountered_errors = False
+
+    descriptor = load_json(EXAMPLE_PACKAGE_PATH)
+    if descriptor is None:
+        print("✕ valid JSON")
+        return False
+    print("✔︎ valid JSON")
+
+    validator = Draft202012Validator(profile["allOf"][1])
+    errors = sorted(validator.iter_errors(descriptor), key=lambda err: list(err.path))
+    if errors:
+        print("✕ conforms to the GeoLocator DP profile, errors:")
+        for err in errors:
+            location = "/".join(str(part) for part in err.path) or "<root>"
+            print(f"\t - {location}: {err.message}")
+        encountered_errors = True
+    else:
+        print("✔︎ conforms to the GeoLocator DP profile")
+
+    # Every referenced file and table schema must exist in this repository, which
+    # catches typos while the version in the URL is not tagged yet.
+    for resource in descriptor.get("resources", []):
+        path = resource.get("path")
+        if isinstance(path, str) and not (EXAMPLE_PACKAGE_PATH.parent / path).exists():
+            print(f"✕ resource `{resource.get('name')}`: missing file `{path}`")
+            encountered_errors = True
+
+        schema = resource.get("schema")
+        if isinstance(schema, str):
+            schema_file = REPOSITORY_ROOT_PATH / re.sub(r"^.*/", "", schema)
+            if not schema_file.exists():
+                print(
+                    f"✕ resource `{resource.get('name')}`: `schema` points at "
+                    f"`{schema_file.name}`, which does not exist in this repository"
+                )
+                encountered_errors = True
+
+    if not encountered_errors:
+        print("✔︎ resource files and table schemas exist")
+
+    return not encountered_errors
+
+
 if __name__ == "__main__":
     encountered_errors = False
     schema_descriptors: Dict[Path, dict] = {}
@@ -198,6 +373,22 @@ if __name__ == "__main__":
     if check_schema_coherence(schema_descriptors):
         print("✔︎ schema coherence checks passed")
     else:
+        encountered_errors = True
+
+    print("\nData Package v2 spellings")
+    if check_v2_spellings(schema_descriptors):
+        print("✔︎ table schemas use the v2 spelling of `fieldsMatch` and keys")
+    else:
+        encountered_errors = True
+
+    print("\nCategories")
+    if check_categories(schema_descriptors):
+        print("✔︎ `categories` and `enum` agree")
+    else:
+        encountered_errors = True
+
+    print(f"\n{EXAMPLE_PACKAGE_PATH.parent.name}/{EXAMPLE_PACKAGE_PATH.name}")
+    if profile_json is None or not check_example_package(profile_json):
         encountered_errors = True
 
     if encountered_errors:

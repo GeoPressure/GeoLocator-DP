@@ -45,12 +45,12 @@
   "missingValues": ["", "NA"],
   "foreignKeys": [
     {
-      "fields": "tag_id",
+      "fields": ["tag_id"],
       "reference": {
         "resource": "tags",
-        "fields": "tag_id"
+        "fields": ["tag_id"]
       }
     }
   ],
-  "fieldsMatch": ["superset"]
+  "fieldsMatch": "superset"
 }

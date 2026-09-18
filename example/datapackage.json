@@ -1,0 +1,35 @@
+{
+  "$schema": "https://raw.githubusercontent.com/GeoPressure/GeoLocator-DP/v1.1/geolocator-dp-profile.json",
+  "resources": [
+    {
+      "$schema": "https://datapackage.org/profiles/2.0/dataresource.json",
+      "name": "tags",
+      "path": "tags.csv",
+      "type": "table",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "encoding": "utf-8",
+      "schema": "https://raw.githubusercontent.com/GeoPressure/GeoLocator-DP/v1.1/tags-table-schema.json"
+    },
+    {
+      "$schema": "https://datapackage.org/profiles/2.0/dataresource.json",
+      "name": "observations",
+      "path": "observations.csv",
+      "type": "table",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "encoding": "utf-8",
+      "schema": "https://raw.githubusercontent.com/GeoPressure/GeoLocator-DP/v1.1/observations-table-schema.json"
+    },
+    {
+      "$schema": "https://datapackage.org/profiles/2.0/dataresource.json",
+      "name": "measurements",
+      "path": "measurements.csv",
+      "type": "table",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "encoding": "utf-8",
+      "schema": "https://raw.githubusercontent.com/GeoPressure/GeoLocator-DP/v1.1/measurements-table-schema.json"
+    }
+  ]
+}
