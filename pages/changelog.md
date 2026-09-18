@@ -22,6 +22,8 @@ releases](https://github.com/GeoPressure/GeoLocator-DP/releases) in one place.
 
 ## v1.1
 
+*18 September 2026 — [release](https://github.com/GeoPressure/GeoLocator-DP/releases/tag/v1.1)*
+
 ### Resources
 
 - Move the GeoLocator DP table schema URL from `resource.$schema` to
