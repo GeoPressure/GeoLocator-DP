@@ -29,7 +29,7 @@ releases](https://github.com/GeoPressure/GeoLocator-DP/releases) in one place.
 - Recommend `British Antarctic Survey` and `PresTag` for `tags.manufacturer`, next to the three existing names, so that every manufacturer GeoPressureR imports has a recommended spelling. The field remains free text.
 
 ### Profile
-- Document in the `params` resource that `params.json` is plain JSON, and that GeoPressureR >= 3.8.0 stores the logger metadata (`model`, `firmware`, `clock_drift`) under `tag_create$settings` and the axis mapping it applied under `tag_create$mag_axis`.
+- Document in the `params` resource that `params.json` is plain JSON.
 
 ### Website
 - Present the `GeoLocator Data Package: ` title prefix as a strong recommendation expected by the community rather than a requirement.
