@@ -9,16 +9,36 @@ follows through the package-level
 
 ```json
 {
-  "$schema": "https://raw.githubusercontent.com/GeoPressure/GeoLocator-DP/v1.2/geolocator-dp-profile.json"
+  "$schema": "https://raw.githubusercontent.com/GeoPressure/GeoLocator-DP/v1.3/geolocator-dp-profile.json"
 }
 ```
 
-[`GeoLocatoR`](https://geopressure.com/GeoLocatoR/) upgrades a package from any
+[`GeoLocatoR`](https://geopressure.org/GeoLocatoR/) upgrades a package from any
 earlier version when it reads one, so an archived package never needs to be
 rewritten by hand.
 
 This page collects the [GitHub
 releases](https://github.com/GeoPressure/GeoLocator-DP/releases) in one place.
+
+## v1.3
+
+*5 November 2026 — [release](https://github.com/GeoPressure/GeoLocator-DP/releases/tag/v1.3)*
+
+### Fields
+- Define the frame and units of `acceleration_x/y/z` and `magnetic_x/y/z` in `measurements`: `x`, `y` and `z` are the forward, right and down axes of the bird, acceleration is in g and the magnetic field in gauss ([f24fd0f](https://github.com/GeoPressure/GeoLocator-DP/commit/f24fd0f)). The previous labels said m/s^2 and microtesla, which no software wrote, and left the axes to the hardware. GeoPressureR >= 3.8.0 writes SOI data in this frame (forward = raw `y`, right = raw `x`, down = raw `z`; [GeoPressureR#187](https://github.com/GeoPressure/GeoPressureR/pull/187)); older versions stored raw or hardware-dependent axes. GeoLocatoR converts that data once, when it upgrades a package to v1.3.
+- Recommend `British Antarctic Survey` and `PresTag` for `tags.manufacturer`, next to the three existing names, so that every manufacturer GeoPressureR imports has a recommended spelling. The field remains free text.
+
+### Profile
+- Document in the `params` resource that `params.json` is plain JSON.
+
+### Website
+- Present the `GeoLocator Data Package: ` title prefix as a recommendation rather than a requirement.
+- Call `plot(pkg, ...)` after `library(GeoLocatoR)`: `GeoLocatoR::plot()` fails because `plot()` is an S3 method, not an export.
+- Link `geopressure.org`, the canonical domain, instead of `geopressure.com`.
+
+### Repository
+- Make the example package valid: use the defined `mean_acceleration_z` sensor instead of `acceleration`, add the tag that observations refer to, add a prefixed `title` and contributor `roles`, swap the latitude and longitude of the observations (Watamu is at 3.4° S, 40.0° E), and fix typos in `tags.csv`.
+- Require frictionless >= 5.21 for `tests/validate_profile_and_schemas.py`, and run it on Python 3.13.
 
 ## v1.2
 
@@ -76,7 +96,7 @@ releases](https://github.com/GeoPressure/GeoLocator-DP/releases) in one place.
   must be present, the optional ones may be absent"
   ([frictionlessdata/datapackage#1126](https://github.com/frictionlessdata/datapackage/issues/1126)).
   Presence of the required columns is therefore checked separately, by
-  [`GeoLocatoR::validate_gldp()`](https://geopressure.com/GeoLocatoR/reference/validate_gldp.html).
+  [`GeoLocatoR::validate_gldp()`](https://geopressure.org/GeoLocatoR/reference/validate_gldp.html).
 - Write [`primaryKey`](https://datapackage.org/standard/table-schema/#primaryKey)
   and [`foreignKeys`](https://datapackage.org/standard/table-schema/#foreignKeys)
   fields as arrays of strings, the Data Package v2 spelling.

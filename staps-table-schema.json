@@ -1,7 +1,7 @@
 {
   "name": "staps",
   "title": "Stationary periods",
-  "description": "A stationary period (`stap`) is [a key concept in the GeoPressureR workflow](https://geopressure.com/GeoPressureManual/tag-object#label-tag-into-stationary-periods) that discretizes a bird trajectory in time and space. During a single `stap`, the bird is assumed to remain at the same location (+/- tens of kilometers). [`flight`](https://geopressure.com/GeoPressureR/reference/stap2flight) is the converse of `stap`, with `flight.start` corresponding to a `stap.end`, and vice versa.\n\n{:.alert .alert-info}\n`stap_id` is indexed within each `tag_id` (it is not globally unique), so the table key is the composite pair (`tag_id`, `stap_id`). `staps` are typically estimated by [`GeoPressureR::tag_label_stap()`](https://geopressure.com/GeoPressureR/reference/tag_label_stap) based on the `'flight'` labels assigned to pressure or acceleration measurements ([`measurements.label`](/GeoLocator-DP/core/measurements#label)). See the [GeoPressureManual](https://geopressure.com/GeoPressureManual/labelling-tracks) for more details.",
+  "description": "A stationary period (`stap`) is [a key concept in the GeoPressureR workflow](https://geopressure.org/GeoPressureManual/tag-object#label-tag-into-stationary-periods) that discretizes a bird trajectory in time and space. During a single `stap`, the bird is assumed to remain at the same location (+/- tens of kilometers). [`flight`](https://geopressure.org/GeoPressureR/reference/stap2flight) is the converse of `stap`, with `flight.start` corresponding to a `stap.end`, and vice versa.\n\n{:.alert .alert-info}\n`stap_id` is indexed within each `tag_id` (it is not globally unique), so the table key is the composite pair (`tag_id`, `stap_id`). `staps` are typically estimated by [`GeoPressureR::tag_label_stap()`](https://geopressure.org/GeoPressureR/reference/tag_label_stap) based on the `'flight'` labels assigned to pressure or acceleration measurements ([`measurements.label`](/GeoLocator-DP/core/measurements#label)). See the [GeoPressureManual](https://geopressure.org/GeoPressureManual/labelling-tracks) for more details.",
   "$schema": "https://datapackage.org/profiles/2.0/tableschema.json",
   "fields": [
     {
@@ -45,7 +45,7 @@
     },
     {
       "name": "known_lat",
-      "description": "Latitude of the known stationary period. This value is typically assigned by [`GeoPressureR::tag_set_map()`](https://geopressure.com/GeoPressureR/reference/tag_set_map).",
+      "description": "Latitude of the known stationary period. This value is typically assigned by [`GeoPressureR::tag_set_map()`](https://geopressure.org/GeoPressureR/reference/tag_set_map).",
       "type": "number",
       "constraints": {
         "required": false,
@@ -57,7 +57,7 @@
     },
     {
       "name": "known_lon",
-      "description": "Longitude of the known stationary period. This value is typically assigned by [`GeoPressureR::tag_set_map()`](https://geopressure.com/GeoPressureR/reference/tag_set_map).",
+      "description": "Longitude of the known stationary period. This value is typically assigned by [`GeoPressureR::tag_set_map()`](https://geopressure.org/GeoPressureR/reference/tag_set_map).",
       "type": "number",
       "constraints": {
         "required": false,

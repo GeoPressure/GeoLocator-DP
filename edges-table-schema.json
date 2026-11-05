@@ -1,7 +1,7 @@
 {
   "name": "edges",
   "title": "Edges",
-  "description": "In GeoPressureR, `edges` (graph edges; see more information on the movement model in the [GeoPressureManual](https://geopressure.com/GeoPressureManual/trajectory.html)) are used to extract flight information from GeoPressureR [`paths`](/GeoLocator-DP/geopressurer/paths) using `path2edge()`.",
+  "description": "In GeoPressureR, `edges` (graph edges; see more information on the movement model in the [GeoPressureManual](https://geopressure.org/GeoPressureManual/trajectory.html)) are used to extract flight information from GeoPressureR [`paths`](/GeoLocator-DP/geopressurer/paths) using `path2edge()`.",
   "$schema": "https://datapackage.org/profiles/2.0/tableschema.json",
   "fields": [
     {
@@ -109,7 +109,7 @@
     },
     {
       "name": "j",
-      "description": "Trajectory identifier within each combination of `tag_id` and `type`. For `simulation`, use an integer from `1` to `nj` as defined in [`GeoPressureR::graph_simulation()`](https://geopressure.com/GeoPressureR/reference/graph_simulation). Use `1` for other trajectory types.",
+      "description": "Trajectory identifier within each combination of `tag_id` and `type`. For `simulation`, use an integer from `1` to `nj` as defined in [`GeoPressureR::graph_simulation()`](https://geopressure.org/GeoPressureR/reference/graph_simulation). Use `1` for other trajectory types.",
       "type": "integer",
       "constraints": {
         "required": true,

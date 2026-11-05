@@ -1,7 +1,7 @@
 {
   "name": "twilights",
   "title": "Twilights",
-  "description": "Table containing twilight data inferred from light data for all tags. Twilight data is typically computed with [`GeoPressureR::twilight_create()`](https://geopressure.com/GeoPressureR/reference/twilight_create.html).",
+  "description": "Table containing twilight data inferred from light data for all tags. Twilight data is typically computed with [`GeoPressureR::twilight_create()`](https://geopressure.org/GeoPressureR/reference/twilight_create.html).",
   "$schema": "https://datapackage.org/profiles/2.0/tableschema.json",
   "fields": [
     {
@@ -34,7 +34,7 @@
     },
     {
       "name": "label",
-      "description": "Labeling of twilight data according to the [GeoPressureManual](https://geopressure.com/GeoPressureManual/light-map.html#manual-labelling-of-twilight). The value `discard` indicates that the twilight should not be used for geopositioning. Any other value can be used without affecting the workflow; setting it to `stap_id` typically helps visualize which twilights belong to the same stationary period in the training set.",
+      "description": "Labeling of twilight data according to the [GeoPressureManual](https://geopressure.org/GeoPressureManual/light-map.html#manual-labelling-of-twilight). The value `discard` indicates that the twilight should not be used for geopositioning. Any other value can be used without affecting the workflow; setting it to `stap_id` typically helps visualize which twilights belong to the same stationary period in the training set.",
       "type": "string",
       "constraints": {
         "required": false

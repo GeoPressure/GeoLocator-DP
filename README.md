@@ -5,8 +5,8 @@ GeoLocator DP is a Data Package profile for geolocator data (raw measurements, f
 ## Documentation
 
 - Website: https://geopressure.org/GeoLocator-DP/
-- GeoLocator Manual: https://geopressure.com/GeoPressureManual/geolocator-intro.html
-- GeoLocatoR package: https://geopressure.com/GeoLocatoR/
+- GeoLocator Manual: https://geopressure.org/GeoPressureManual/geolocator-intro.html
+- GeoLocatoR package: https://geopressure.org/GeoLocatoR/
 
 ## Repository Contents
 

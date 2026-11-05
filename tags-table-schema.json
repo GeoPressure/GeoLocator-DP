@@ -16,7 +16,7 @@
     },
     {
       "name": "datapackage_id",
-      "description": "Optional identifier of the data package for this tag, typically corresponding to the `datapackage.id`. This field is mostly used when [merging multiple data packages](https://geopressure.com/GeoLocatoR/reference/merge_gldp.html).",
+      "description": "Optional identifier of the data package for this tag, typically corresponding to the `datapackage.id`. This field is mostly used when [merging multiple data packages](https://geopressure.org/GeoLocatoR/reference/merge_gldp.html).",
       "type": "string",
       "constraints": {
         "required": false
@@ -48,7 +48,7 @@
     },
     {
       "name": "manufacturer",
-      "description": "The company or person that produced the tag. When appropriate, please use the terms `'Swiss Ornithological Institute'`, `'Migrate Technology Limited'`, or `'Lund University'`.",
+      "description": "The company or person that produced the tag. When appropriate, please use the terms `'Swiss Ornithological Institute'`, `'Migrate Technology Limited'`, `'Lund University'`, `'British Antarctic Survey'`, or `'PresTag'`.",
       "type": "string",
       "constraints": {
         "required": true

@@ -2,7 +2,7 @@ cff-version: 1.2.0
 type: software
 license: MIT
 title: GeoLocator Data Package
-version: 1.2
+version: 1.3
 authors:
   - family-names: Nussbaumer
     given-names: Raphaël
@@ -17,5 +17,5 @@ authors:
   - name: GeoLocator DP Development Team
 repository-code: https://github.com/GeoPressure/geolocator-dp
 url: https://geopressure.org/GeoLocator-DP/
-date-released: "2024-12-02"
+date-released: "2026-11-05"
 doi: 10.5281/zenodo.14258411

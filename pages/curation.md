@@ -6,7 +6,7 @@ permalink: /curation/
 
 ## 1. Mandatory Technical Validation
 
-All submitted records must pass the automated validation of [`validate_gldp()`](https://geopressure.com/GeoLocatoR/reference/validate_gldp.html).
+All submitted records must pass the automated validation of [`validate_gldp()`](https://geopressure.org/GeoLocatoR/reference/validate_gldp.html).
 
 ## 2. Visual Check
 
@@ -15,10 +15,11 @@ In addition to automated checks, each submission must pass visual and metadata s
 Run these checks from the directory containing your package manifest:
 
 ```r
-pkg <- GeoLocatoR::read_gldp("datapackage.json")
-GeoLocatoR::plot(pkg, "coverage")
-GeoLocatoR::plot(pkg, "ring")
-GeoLocatoR::plot(pkg, "map")
+library(GeoLocatoR)
+pkg <- read_gldp("datapackage.json")
+plot(pkg, "coverage")
+plot(pkg, "ring")
+plot(pkg, "map")
 print(pkg)
 ```
 
@@ -26,12 +27,12 @@ print(pkg)
 
 ### Required
 
-- **Title**: Must start with `GeoLocator Data Package: `.
 - **Access**: Embargoed records are permitted, but duration must be reasonable and justified, typically until first publication.
 - **Description**: Include minimum contextual information such as study species, main study area, project objective, and key processing notes that affect reuse. It's also a good place to invite potential users of the data to get in touch.
 
 ### Recommended
 
+- **Title**: Should start with `GeoLocator Data Package: `.
 - **Related works**: Link publications that use the data via related identifiers.
 - **Software/Repository URL**: Provide a link to the GeoPressureTemplate GitHub repository.
 - **Zenodo badge**: Add the Zenodo badge of your repository at the top of the GitHub `README`.

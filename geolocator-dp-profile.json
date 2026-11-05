@@ -106,7 +106,7 @@
                   "required": ["name", "path"],
                   "properties": {
                     "name": {
-                      "description": "GeoPressureR parameters resource. This JSON file stores the parameters used to build trajectories in the GeoPressureR workflow (the `param` object, organized as `param$<function_name>$<argument_name>`).",
+                      "description": "GeoPressureR parameters resource. This JSON file stores the parameters used to build trajectories in the GeoPressureR workflow (the `param` object, organized as `param$<function_name>$<argument_name>`). The file is plain JSON, without a table schema.",
                       "const": "params"
                     },
                     "path": {
