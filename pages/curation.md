@@ -32,7 +32,7 @@ print(pkg)
 
 ### Recommended
 
-- **Title**: Should start with `GeoLocator Data Package: `. The prefix is strongly recommended and expected by the GeoLocator DP community; [`validate_gldp()`](https://geopressure.org/GeoLocatoR/reference/validate_gldp.html) warns when it is missing.
+- **Title**: Should start with `GeoLocator Data Package: `.
 - **Related works**: Link publications that use the data via related identifiers.
 - **Software/Repository URL**: Provide a link to the GeoPressureTemplate GitHub repository.
 - **Zenodo badge**: Add the Zenodo badge of your repository at the top of the GitHub `README`.

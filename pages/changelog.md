@@ -32,7 +32,7 @@ releases](https://github.com/GeoPressure/GeoLocator-DP/releases) in one place.
 - Document in the `params` resource that `params.json` is plain JSON.
 
 ### Website
-- Present the `GeoLocator Data Package: ` title prefix as a strong recommendation expected by the community rather than a requirement.
+- Present the `GeoLocator Data Package: ` title prefix as a recommendation rather than a requirement.
 - Call `plot(pkg, ...)` after `library(GeoLocatoR)`: `GeoLocatoR::plot()` fails because `plot()` is an S3 method, not an export.
 - Link `geopressure.org`, the canonical domain, instead of `geopressure.com`.
 
