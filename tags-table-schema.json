@@ -48,7 +48,7 @@
     },
     {
       "name": "manufacturer",
-      "description": "The company or person that produced the tag. When appropriate, please use the terms `'Swiss Ornithological Institute'`, `'Migrate Technology Limited'`, or `'Lund University'`.",
+      "description": "The company or person that produced the tag. When appropriate, please use the terms `'Swiss Ornithological Institute'`, `'Migrate Technology Limited'`, `'Lund University'`, `'British Antarctic Survey'`, or `'PresTag'`.",
       "type": "string",
       "constraints": {
         "required": true

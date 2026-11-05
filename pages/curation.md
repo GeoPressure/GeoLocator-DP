@@ -26,12 +26,12 @@ print(pkg)
 
 ### Required
 
-- **Title**: Must start with `GeoLocator Data Package: `.
 - **Access**: Embargoed records are permitted, but duration must be reasonable and justified, typically until first publication.
 - **Description**: Include minimum contextual information such as study species, main study area, project objective, and key processing notes that affect reuse. It's also a good place to invite potential users of the data to get in touch.
 
 ### Recommended
 
+- **Title**: Should start with `GeoLocator Data Package: `. The prefix is strongly recommended and expected by the GeoLocator DP community; [`validate_gldp()`](https://geopressure.org/GeoLocatoR/reference/validate_gldp.html) warns when it is missing.
 - **Related works**: Link publications that use the data via related identifiers.
 - **Software/Repository URL**: Provide a link to the GeoPressureTemplate GitHub repository.
 - **Zenodo badge**: Add the Zenodo badge of your repository at the top of the GitHub `README`.
