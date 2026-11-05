@@ -16,7 +16,7 @@
     },
     {
       "name": "datapackage_id",
-      "description": "Optional identifier of the data package for this tag, typically corresponding to the `datapackage.id`. This field is mostly used when [merging multiple data packages](https://geopressure.com/GeoLocatoR/reference/merge_gldp.html).",
+      "description": "Optional identifier of the data package for this tag, typically corresponding to the `datapackage.id`. This field is mostly used when [merging multiple data packages](https://geopressure.org/GeoLocatoR/reference/merge_gldp.html).",
       "type": "string",
       "constraints": {
         "required": false

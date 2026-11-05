@@ -13,7 +13,7 @@ follows through the package-level
 }
 ```
 
-[`GeoLocatoR`](https://geopressure.com/GeoLocatoR/) upgrades a package from any
+[`GeoLocatoR`](https://geopressure.org/GeoLocatoR/) upgrades a package from any
 earlier version when it reads one, so an archived package never needs to be
 rewritten by hand.
 
@@ -76,7 +76,7 @@ releases](https://github.com/GeoPressure/GeoLocator-DP/releases) in one place.
   must be present, the optional ones may be absent"
   ([frictionlessdata/datapackage#1126](https://github.com/frictionlessdata/datapackage/issues/1126)).
   Presence of the required columns is therefore checked separately, by
-  [`GeoLocatoR::validate_gldp()`](https://geopressure.com/GeoLocatoR/reference/validate_gldp.html).
+  [`GeoLocatoR::validate_gldp()`](https://geopressure.org/GeoLocatoR/reference/validate_gldp.html).
 - Write [`primaryKey`](https://datapackage.org/standard/table-schema/#primaryKey)
   and [`foreignKeys`](https://datapackage.org/standard/table-schema/#foreignKeys)
   fields as arrays of strings, the Data Package v2 spelling.

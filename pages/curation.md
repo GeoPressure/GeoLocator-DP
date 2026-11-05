@@ -6,7 +6,7 @@ permalink: /curation/
 
 ## 1. Mandatory Technical Validation
 
-All submitted records must pass the automated validation of [`validate_gldp()`](https://geopressure.com/GeoLocatoR/reference/validate_gldp.html).
+All submitted records must pass the automated validation of [`validate_gldp()`](https://geopressure.org/GeoLocatoR/reference/validate_gldp.html).
 
 ## 2. Visual Check
 
@@ -15,10 +15,11 @@ In addition to automated checks, each submission must pass visual and metadata s
 Run these checks from the directory containing your package manifest:
 
 ```r
-pkg <- GeoLocatoR::read_gldp("datapackage.json")
-GeoLocatoR::plot(pkg, "coverage")
-GeoLocatoR::plot(pkg, "ring")
-GeoLocatoR::plot(pkg, "map")
+library(GeoLocatoR)
+pkg <- read_gldp("datapackage.json")
+plot(pkg, "coverage")
+plot(pkg, "ring")
+plot(pkg, "map")
 print(pkg)
 ```
 

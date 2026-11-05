@@ -131,7 +131,7 @@
     },
     {
       "name": "label",
-      "description": "Labeling of pressure and acceleration data according to the [labeling chapter of the GeoPressureManual](https://geopressure.com/GeoPressureManual/labelling-tracks.html).",
+      "description": "Labeling of pressure and acceleration data according to the [labeling chapter of the GeoPressureManual](https://geopressure.org/GeoPressureManual/labelling-tracks.html).",
       "type": "string",
       "constraints": {
         "required": false,
