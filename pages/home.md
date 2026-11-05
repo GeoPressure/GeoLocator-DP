@@ -35,7 +35,7 @@ The GeoPressureR extension consists of optional trajectory data generated throug
 | [`edges.csv`](https://geopressure.org/GeoLocator-DP/geopressurer/edges)                 | Table containing the flight information of the edges associated with the paths.                                               |
 | [`twilights.csv`](https://geopressure.org/GeoLocator-DP/geopressurer/twilights)         | Table of the twilights estimated from light data for all tags.                                                                |
 | [`pressurepaths.csv`](https://geopressure.org/GeoLocator-DP/geopressurer/pressurepaths) | Table of pressure-based paths.                                                                                                |
-| `params.json`                                                                           | List of [parameters](https://geopressure.org/GeoPressureR/reference/param_create.html) used to run the GeoPressureR workflow. |
+| `params.json`                                                                           | List of [parameters](https://geopressure.org/GeoPressureR/reference/param_create.html) used to run the GeoPressureR workflow, stored as plain JSON (`param$<function>$<argument>`). GeoPressureR ≥ 3.8.0 stores the logger metadata under `tag_create$settings` and the magnetic/acceleration axis mapping under `tag_create$mag_axis`. |
 
 ### 3. Local Manifest
 
