@@ -1,9 +1,10 @@
 ﻿tag_id,datapackage_id,ring_number,scientific_name,manufacturer,model,firmware,weight,attachment_type,readout_method,tag_comments
-28CC,,AA17012,Cossypha natalensis,Swiss Ornithological Institute,GDL3pam-v2.3,FW_GDL3pam_V2.4.1,1.58,leg harness|material:cord|attachement:tubes,,
-30II,,AA17012,Cossypha natalensis,Swiss Ornithological Institute,GDL3pam-v2.3,FW_GDL3pam_V2.4.1,1.48,leg harness|material:cord|attachement:tubes,,2 years between equipement and retrieval
-32YS,,AA17012,Cossypha natalensis,Swiss Ornithological Institute,GDL3pam-v2.4,GDL3pam_V2.6.0-RC1,1.56,leg harness|material:cord|attachement:tubes,,
-24TA,,AA17012,Cossypha natalensis,Swiss Ornithological Institute,GDL3pam-v2.3,GDL3pam_V2.5.1,1.52,leg harness|material:cord|attachement:tubes,,
-28BH,,AA17497,Cossypha natalensis,Swiss Ornithological Institute,GDL3pam-v2.3,FW_GDL3pam_V2.4.1,1.66,leg harness|material:cord|attachement:tubes,,tag equipped initially on AA17319 but was killed by a monkey. Then moved the geolocator on AA17497
-28AA,,BB6573,Halcyon senegaloides,Swiss Ornithological Institute,GDL3pam-v2.3,FW_GDL3pam_V2.4.1,1.49,leg harness|material:cord|attachement:tubes,,
-30HZ,,BB6573,Halcyon senegaloides,Swiss Ornithological Institute,GDL3pam-v2.3,FW_GDL3pam_V2.4.1,1.59,leg harness|material:cord|attachement:tubes,,
-30IP,,L02965,Halcyon senegaloides,Swiss Ornithological Institute,GDL3pam-v2.3,FW_GDL3pam_V2.4.1,1.52,leg harness|material:cord|attachement:tubes,,
+28CC,,AA17012,Cossypha natalensis,Swiss Ornithological Institute,GDL3pam-v2.3,FW_GDL3pam_V2.4.1,1.58,leg harness|material:cord|attachment:tubes,,
+30II,,AA17012,Cossypha natalensis,Swiss Ornithological Institute,GDL3pam-v2.3,FW_GDL3pam_V2.4.1,1.48,leg harness|material:cord|attachment:tubes,,2 years between equipment and retrieval
+32YS,,AA17012,Cossypha natalensis,Swiss Ornithological Institute,GDL3pam-v2.4,GDL3pam_V2.6.0-RC1,1.56,leg harness|material:cord|attachment:tubes,,
+24TA,,AA17012,Cossypha natalensis,Swiss Ornithological Institute,GDL3pam-v2.3,GDL3pam_V2.5.1,1.52,leg harness|material:cord|attachment:tubes,,
+28BH,,AA17497,Cossypha natalensis,Swiss Ornithological Institute,GDL3pam-v2.3,FW_GDL3pam_V2.4.1,1.66,leg harness|material:cord|attachment:tubes,,tag equipped initially on AA17319 but was killed by a monkey. Then moved the geolocator on AA17497
+28AA,,BB6573,Halcyon senegaloides,Swiss Ornithological Institute,GDL3pam-v2.3,FW_GDL3pam_V2.4.1,1.49,leg harness|material:cord|attachment:tubes,,
+30HZ,,BB6573,Halcyon senegaloides,Swiss Ornithological Institute,GDL3pam-v2.3,FW_GDL3pam_V2.4.1,1.59,leg harness|material:cord|attachment:tubes,,
+30IP,,L02965,Halcyon senegaloides,Swiss Ornithological Institute,GDL3pam-v2.3,FW_GDL3pam_V2.4.1,1.52,leg harness|material:cord|attachment:tubes,,
+27LH,,AA17126,Cossypha natalensis,Swiss Ornithological Institute,GDL3pam-v2.3,,,leg harness|material:cord|attachment:tubes,,

@@ -1,5 +1,15 @@
 {
-  "$schema": "https://raw.githubusercontent.com/GeoPressure/GeoLocator-DP/v1.2/geolocator-dp-profile.json",
+  "$schema": "https://raw.githubusercontent.com/GeoPressure/GeoLocator-DP/v1.3/geolocator-dp-profile.json",
+  "title": "GeoLocator Data Package: Example of light and pressure geolocators on Red-capped Robin-Chat and Mangrove Kingfisher in Watamu, Kenya",
+  "contributors": [
+    {
+      "title": "Raphaël Nussbaumer",
+      "givenName": "Raphaël",
+      "familyName": "Nussbaumer",
+      "email": "GeoPressure@gmail.com",
+      "roles": ["ContactPerson", "DataCurator"]
+    }
+  ],
   "resources": [
     {
       "$schema": "https://datapackage.org/profiles/2.0/dataresource.json",
@@ -9,7 +19,7 @@
       "format": "csv",
       "mediatype": "text/csv",
       "encoding": "utf-8",
-      "schema": "https://raw.githubusercontent.com/GeoPressure/GeoLocator-DP/v1.2/tags-table-schema.json"
+      "schema": "https://raw.githubusercontent.com/GeoPressure/GeoLocator-DP/v1.3/tags-table-schema.json"
     },
     {
       "$schema": "https://datapackage.org/profiles/2.0/dataresource.json",
@@ -19,7 +29,7 @@
       "format": "csv",
       "mediatype": "text/csv",
       "encoding": "utf-8",
-      "schema": "https://raw.githubusercontent.com/GeoPressure/GeoLocator-DP/v1.2/observations-table-schema.json"
+      "schema": "https://raw.githubusercontent.com/GeoPressure/GeoLocator-DP/v1.3/observations-table-schema.json"
     },
     {
       "$schema": "https://datapackage.org/profiles/2.0/dataresource.json",
@@ -29,7 +39,7 @@
       "format": "csv",
       "mediatype": "text/csv",
       "encoding": "utf-8",
-      "schema": "https://raw.githubusercontent.com/GeoPressure/GeoLocator-DP/v1.2/measurements-table-schema.json"
+      "schema": "https://raw.githubusercontent.com/GeoPressure/GeoLocator-DP/v1.3/measurements-table-schema.json"
     }
   ]
 }
