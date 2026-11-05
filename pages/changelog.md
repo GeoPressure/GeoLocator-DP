@@ -37,7 +37,7 @@ releases](https://github.com/GeoPressure/GeoLocator-DP/releases) in one place.
 - Link `geopressure.org`, the canonical domain, instead of `geopressure.com`.
 
 ### Repository
-- Make the example package valid: use the defined `mean_acceleration_z` sensor instead of `acceleration`, add the tag that observations refer to, add a prefixed `title` and contributor `roles`, and fix typos in `tags.csv`.
+- Make the example package valid: use the defined `mean_acceleration_z` sensor instead of `acceleration`, add the tag that observations refer to, add a prefixed `title` and contributor `roles`, swap the latitude and longitude of the observations (Watamu is at 3.4° S, 40.0° E), and fix typos in `tags.csv`.
 - Require frictionless >= 5.21 for `tests/validate_profile_and_schemas.py`.
 
 ## v1.2

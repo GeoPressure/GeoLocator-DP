@@ -1,19 +1,19 @@
 ﻿ring_number,tag_id,observation_type,datetime,latitude,longitude,location_name,device_status,observer,catching_method,age_class,sex,condition,mass,wing_length,additional_metric,observation_comments
-AA17012,24TA,equipment,2020-08-20T07:00,39.988903,-3.37827,Mwamba,present,LK,M,4,U,alive,34.2,97,,nets: 7
-AA17012,24TA,retrieval,2021-06-10T07:00,39.988903,-3.37827,Mwamba,present,CJ,M,4,U,alive,36.9,99,,nets: 4 | Removed old tag_id 24TA and equipped new 28CC
-AA17012,28CC,equipment,2021-06-10T07:00,39.988903,-3.37827,Mwamba,present,CJ,M,4,U,alive,36.9,99,,Removed old tag_id 24TA and equipped new 28CC
-AA17012,28CC,retrieval,2022-10-28T00:00,39.988903,-3.37827,Mwamba,present,LK,M,4,U,alive,36.6,98,,"nets: 3 | Old tag_id 28CC removed, new tag_id 30II deployed."
-AA17012,30II,equipment,2022-10-28T00:00,39.988903,-3.37827,Mwamba,present,LK,M,4,U,alive,36.6,98,,"Old GL 28CC removed, new GL 30II deployed | nets: 3"
-AA17012,30II,retrieval,2024-06-27T07:00,39.988903,-3.37827,Mwamba,present,CJ,M,4,U,alive,36.1,98,,"Old tag_id 30II reomoved, and a new tag_id 32YS deployed"
-AA17012,32YS,equipment,2024-06-27T07:00,39.988903,-3.37827,Mwamba,present,CJ,M,4,U,alive,36.1,98,,"Old tag_id 30II reomoved, and a new tag_id 32YS deployed"
-AA17126,27LH,equipment,2020-06-11T07:00,39.988903,-3.37827,Mwamba,present,RNS,M,3,U,alive,32.1,92,,geolocator slightly loose. 1 retained GC | nets: 12
-AA17126,27LH,capture,2020-08-14T10:00,39.988903,-3.37827,Mwamba,present,LK,M,3,U,alive,31.5,93,,"retained 1 juv GC. Geolocator equiped in june this year, slightly loose. Left geolocator on the bird | nets: 12"
-AA17126,27LH,capture,2020-11-27T06:30,39.988903,-3.37827,Mwamba,present,LK,M,3,U,alive,33.9,93,,logger still on the bird | nets: 6
-AA17126,27LH,retrieval,2021-11-04T06:00,39.988903,-3.37827,Mwamba,present,CJ,M,4,U,alive,30,97,,"Retrieved old tag_id, released with no tag | nets: 14"
-AA17497,28BH,equipment,2021-10-29T08:00,39.988903,-3.37827,Mwamba,present,CJ,M,3,U,alive,28.6,96,,tag equipped initially on AA17319 but was killed by a monkey. Then moved the geolocator on AA17497 | nets: 10
-BB6573,28AA,equipment,2021-07-27T06:00,39.947545,-3.340739,Kirao's Home,present,EMM,M,4,U,alive,66.9,106,,
-BB6573,28AA,retrieval,2022-07-14T06:30,39.950184,-3.339192,Kitsao Kaviha's Beach,present,LK,M,4,U,alive,67.5,105,,Old tag_id 28AA (with no antenna) removed and new one 30HZ deployed
-BB6573,30HZ,equipment,2022-07-14T06:30,39.950184,-3.339192,Kitsao Kaviha's Beach,present,LK,M,4,U,alive,67.5,105,,Old tag_id 28AA (with no antenna) removed and new one 30HZ deployed
-BB6573,30HZ,retrieval,2023-05-16T09:00,39.95,-3.34,Kitsao Kaviha home,present,LK,-,4,U,dead,,,,Found dead in a cow's drinking water tank
-L02965,30IP,equipment,2022-08-09T06:30,39.978256,-3.382752,"Plot 41a, Garoda, Watamu",present,CJ,M,3,U,alive,27.7,90,"{head:39, tail:69, tarsus:12}",40% JBP
-L02965,30IP,capture,2022-10-28T00:00,39.978256,-3.382752,"Plot 41a, Garoda, Watamu",missing,CJ,-,0,U,dead,,,,Eaten by a monkey. No trace of the tag!
+AA17012,24TA,equipment,2020-08-20T07:00,-3.37827,39.988903,Mwamba,present,LK,M,4,U,alive,34.2,97,,nets: 7
+AA17012,24TA,retrieval,2021-06-10T07:00,-3.37827,39.988903,Mwamba,present,CJ,M,4,U,alive,36.9,99,,nets: 4 | Removed old tag_id 24TA and equipped new 28CC
+AA17012,28CC,equipment,2021-06-10T07:00,-3.37827,39.988903,Mwamba,present,CJ,M,4,U,alive,36.9,99,,Removed old tag_id 24TA and equipped new 28CC
+AA17012,28CC,retrieval,2022-10-28T00:00,-3.37827,39.988903,Mwamba,present,LK,M,4,U,alive,36.6,98,,"nets: 3 | Old tag_id 28CC removed, new tag_id 30II deployed."
+AA17012,30II,equipment,2022-10-28T00:00,-3.37827,39.988903,Mwamba,present,LK,M,4,U,alive,36.6,98,,"Old GL 28CC removed, new GL 30II deployed | nets: 3"
+AA17012,30II,retrieval,2024-06-27T07:00,-3.37827,39.988903,Mwamba,present,CJ,M,4,U,alive,36.1,98,,"Old tag_id 30II reomoved, and a new tag_id 32YS deployed"
+AA17012,32YS,equipment,2024-06-27T07:00,-3.37827,39.988903,Mwamba,present,CJ,M,4,U,alive,36.1,98,,"Old tag_id 30II reomoved, and a new tag_id 32YS deployed"
+AA17126,27LH,equipment,2020-06-11T07:00,-3.37827,39.988903,Mwamba,present,RNS,M,3,U,alive,32.1,92,,geolocator slightly loose. 1 retained GC | nets: 12
+AA17126,27LH,capture,2020-08-14T10:00,-3.37827,39.988903,Mwamba,present,LK,M,3,U,alive,31.5,93,,"retained 1 juv GC. Geolocator equiped in june this year, slightly loose. Left geolocator on the bird | nets: 12"
+AA17126,27LH,capture,2020-11-27T06:30,-3.37827,39.988903,Mwamba,present,LK,M,3,U,alive,33.9,93,,logger still on the bird | nets: 6
+AA17126,27LH,retrieval,2021-11-04T06:00,-3.37827,39.988903,Mwamba,present,CJ,M,4,U,alive,30,97,,"Retrieved old tag_id, released with no tag | nets: 14"
+AA17497,28BH,equipment,2021-10-29T08:00,-3.37827,39.988903,Mwamba,present,CJ,M,3,U,alive,28.6,96,,tag equipped initially on AA17319 but was killed by a monkey. Then moved the geolocator on AA17497 | nets: 10
+BB6573,28AA,equipment,2021-07-27T06:00,-3.340739,39.947545,Kirao's Home,present,EMM,M,4,U,alive,66.9,106,,
+BB6573,28AA,retrieval,2022-07-14T06:30,-3.339192,39.950184,Kitsao Kaviha's Beach,present,LK,M,4,U,alive,67.5,105,,Old tag_id 28AA (with no antenna) removed and new one 30HZ deployed
+BB6573,30HZ,equipment,2022-07-14T06:30,-3.339192,39.950184,Kitsao Kaviha's Beach,present,LK,M,4,U,alive,67.5,105,,Old tag_id 28AA (with no antenna) removed and new one 30HZ deployed
+BB6573,30HZ,retrieval,2023-05-16T09:00,-3.34,39.95,Kitsao Kaviha home,present,LK,-,4,U,dead,,,,Found dead in a cow's drinking water tank
+L02965,30IP,equipment,2022-08-09T06:30,-3.382752,39.978256,"Plot 41a, Garoda, Watamu",present,CJ,M,3,U,alive,27.7,90,"{head:39, tail:69, tarsus:12}",40% JBP
+L02965,30IP,capture,2022-10-28T00:00,-3.382752,39.978256,"Plot 41a, Garoda, Watamu",missing,CJ,-,0,U,dead,,,,Eaten by a monkey. No trace of the tag!
