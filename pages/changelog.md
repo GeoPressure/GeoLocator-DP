@@ -22,7 +22,7 @@ releases](https://github.com/GeoPressure/GeoLocator-DP/releases) in one place.
 
 ## v1.3
 
-*Unreleased*
+*5 November 2026 — [release](https://github.com/GeoPressure/GeoLocator-DP/releases/tag/v1.3)*
 
 ### Fields
 - Define the frame and units of `acceleration_x/y/z` and `magnetic_x/y/z` in `measurements`: `x`, `y` and `z` are the forward, right and down axes of the bird, acceleration is in g and the magnetic field in gauss ([f24fd0f](https://github.com/GeoPressure/GeoLocator-DP/commit/f24fd0f)). The previous labels said m/s^2 and microtesla, which no software wrote, and left the axes to the hardware. GeoPressureR >= 3.8.0 writes SOI data in this frame (forward = raw `y`, right = raw `x`, down = raw `z`; [GeoPressureR#187](https://github.com/GeoPressure/GeoPressureR/pull/187)); older versions stored raw or hardware-dependent axes. GeoLocatoR converts that data once, when it upgrades a package to v1.3.
