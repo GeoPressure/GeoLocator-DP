@@ -9,7 +9,7 @@ follows through the package-level
 
 ```json
 {
-  "$schema": "https://raw.githubusercontent.com/GeoPressure/GeoLocator-DP/v1.2/geolocator-dp-profile.json"
+  "$schema": "https://raw.githubusercontent.com/GeoPressure/GeoLocator-DP/v1.3/geolocator-dp-profile.json"
 }
 ```
 
@@ -19,6 +19,26 @@ rewritten by hand.
 
 This page collects the [GitHub
 releases](https://github.com/GeoPressure/GeoLocator-DP/releases) in one place.
+
+## v1.3
+
+*Unreleased*
+
+### Fields
+- Define the frame and units of `acceleration_x/y/z` and `magnetic_x/y/z` in `measurements`: `x`, `y` and `z` are the forward, right and down axes of the bird, acceleration is in g and the magnetic field in gauss ([f24fd0f](https://github.com/GeoPressure/GeoLocator-DP/commit/f24fd0f)). The previous labels said m/s^2 and microtesla, which no software wrote, and left the axes to the hardware. GeoPressureR >= 3.8.0 writes SOI data in this frame (forward = raw `y`, right = raw `x`, down = raw `z`; [GeoPressureR#187](https://github.com/GeoPressure/GeoPressureR/pull/187)); older versions stored raw or hardware-dependent axes. GeoLocatoR converts that data once, when it upgrades a package to v1.3.
+- Recommend `British Antarctic Survey` and `PresTag` for `tags.manufacturer`, next to the three existing names, so that every manufacturer GeoPressureR imports has a recommended spelling. The field remains free text.
+
+### Profile
+- Document in the `params` resource that `params.json` is plain JSON, and that GeoPressureR >= 3.8.0 stores the logger metadata (`model`, `firmware`, `clock_drift`) under `tag_create$settings` and the axis mapping it applied under `tag_create$mag_axis`.
+
+### Website
+- Present the `GeoLocator Data Package: ` title prefix as a strong recommendation expected by the community rather than a requirement.
+- Call `plot(pkg, ...)` after `library(GeoLocatoR)`: `GeoLocatoR::plot()` fails because `plot()` is an S3 method, not an export.
+- Link `geopressure.org`, the canonical domain, instead of `geopressure.com`.
+
+### Repository
+- Make the example package valid: use the defined `mean_acceleration_z` sensor instead of `acceleration`, add the tag that observations refer to, add a prefixed `title` and contributor `roles`, and fix typos in `tags.csv`.
+- Require frictionless >= 5.21 for `tests/validate_profile_and_schemas.py`.
 
 ## v1.2
 
