@@ -139,7 +139,7 @@
     },
     {
       "name": "n",
-      "description": "Flight number.",
+      "description": "Number of flights in the edge, i.e. the number of stationary periods it spans from `stap_s` to `stap_t`. `1` when `stap_t` directly follows `stap_s`; larger when the trajectory skips intermediate stationary periods, in which case `start` is the departure of the first flight and `end` the arrival of the last.",
       "type": "integer",
       "constraints": {
         "required": false,
