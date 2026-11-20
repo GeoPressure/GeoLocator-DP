@@ -7,6 +7,8 @@ description: Data exchange format for geolocator data
 
 **GeoLocator Data Package** (GeoLocator DP) defines a data exchange format for geolocator data. By using a common structure across projects, GeoLocator DP makes data easier to share, compare, and reuse, ultimately supporting bird migration research, conservation, and public outreach.
 
+GeoLocator DP and the [Master GeoLocator Data Package](https://doi.org/10.5281/zenodo.18187092), which compiles all open packages, are described in [Nussbaumer et al. (2026), *Scientific Data*](https://doi.org/10.1038/s41597-026-08873-x).
+
 {:.alert .alert-primary style="padding-left: 32px;"}
 **Ready to publish your GeoLocator Data Package?** Follow the step-by-step practical guide in the [GeoLocator Data Package chapter of the GeoPressureManual](https://geopressure.org/GeoPressureManual/geolocator-create.html) to create, curate, and share your package with confidence.
 
@@ -117,4 +119,14 @@ For the metadata checklist, validation policy, and visual quality checks before 
 
 ## How to Cite
 
+Cite the paper describing GeoLocator DP and the Master GeoLocator Data Package:
+
+> Nussbaumer, R., Adamík, P., Bell, F., et al. (2026). Standardised multi-sensor geolocator data for bird migration ecology. *Scientific Data*. <https://doi.org/10.1038/s41597-026-08873-x>
+
+When you use the **standard** itself (e.g. to build or validate packages), also cite the version you used:
+
 > Nussbaumer, R., Desmet, P. & Geolocator Development Team (2024). GeoLocator Data Package. Zenodo. <https://doi.org/10.5281/zenodo.14258411>
+
+When you reuse **data**, cite the [Master GeoLocator Data Package](https://doi.org/10.5281/zenodo.18187092) with its concept DOI and the release version you used, and the source data packages contributing to your analysis (their `bibliographicCitation`):
+
+> Nussbaumer, R., Adamík, P., et al. Master GeoLocator Data Package. Zenodo. <https://doi.org/10.5281/zenodo.18187092>

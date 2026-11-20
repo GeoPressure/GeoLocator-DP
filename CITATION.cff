@@ -1,4 +1,5 @@
 cff-version: 1.2.0
+message: If you use GeoLocator DP, please cite it and the Scientific Data paper describing it.
 type: software
 license: MIT
 title: GeoLocator Data Package
@@ -19,3 +20,100 @@ repository-code: https://github.com/GeoPressure/geolocator-dp
 url: https://geopressure.org/GeoLocator-DP/
 date-released: "2026-11-05"
 doi: 10.5281/zenodo.14258411
+references:
+  - type: article
+    title: Standardised multi-sensor geolocator data for bird migration ecology
+    authors:
+      - family-names: Nussbaumer
+        given-names: Raphaël
+      - family-names: Adamík
+        given-names: Peter
+        orcid: https://orcid.org/0000-0003-1566-1234
+      - family-names: Bell
+        given-names: Fraser
+      - family-names: Boves
+        given-names: Than
+      - family-names: Briedis
+        given-names: Martins
+      - family-names: Burgess
+        given-names: Malcolm D.
+      - family-names: Caballero-Lopez
+        given-names: Violeta
+      - family-names: Capilla-Lasheras
+        given-names: Pablo
+      - family-names: Contina
+        given-names: Andrea
+        orcid: https://orcid.org/0000-0002-0484-6711
+      - family-names: Cooper
+        given-names: Nathan W.
+      - family-names: Desmet
+        given-names: Peter
+        orcid: https://orcid.org/0000-0002-8442-8025
+      - family-names: Doniol-Valcroze
+        given-names: Paul
+      - family-names: Dufour
+        given-names: Paul
+      - family-names: Evens
+        given-names: Ruben
+      - family-names: Galletta
+        given-names: Katie J.
+      - family-names: Gravey
+        given-names: Mathieu
+        orcid: https://orcid.org/0000-0002-0871-1507
+      - family-names: Hedenström
+        given-names: Anders
+      - family-names: Heim
+        given-names: Wieland
+      - family-names: Helm
+        given-names: Barbara
+      - family-names: Jiguet
+        given-names: Frédéric
+        orcid: https://orcid.org/0000-0002-0606-7332
+      - family-names: Kishkinev
+        given-names: Dmitry
+      - family-names: Klement
+        given-names: Diane J.
+        orcid: https://orcid.org/0009-0007-3884-0987
+      - family-names: Lathouwers
+        given-names: Michiel
+      - family-names: Liechti
+        given-names: Felix
+        orcid: https://orcid.org/0000-0001-9473-0837
+      - family-names: Macías-Torres
+        given-names: Pablo
+        orcid: https://orcid.org/0000-0002-4503-164X
+      - family-names: Procházka
+        given-names: Petr
+        orcid: https://orcid.org/0000-0001-9385-4547
+      - family-names: Rhyne
+        given-names: Garrett
+      - family-names: Rime
+        given-names: Yann
+      - family-names: Rushing
+        given-names: Clark
+      - family-names: Sjöberg
+        given-names: Sissel
+      - family-names: Szarmach
+        given-names: Stephanie
+      - family-names: Ward
+        given-names: Michael
+      - family-names: Wong
+        given-names: Joanna B.
+        orcid: https://orcid.org/0000-0003-4607-2803
+      - family-names: Zhao
+        given-names: Tianhao
+        orcid: https://orcid.org/0000-0002-6500-4526
+    journal: Scientific Data
+    year: 2026
+    doi: 10.1038/s41597-026-08873-x
+  - type: data
+    title: Master GeoLocator Data Package
+    authors:
+      - family-names: Nussbaumer
+        given-names: Raphaël
+        orcid: https://orcid.org/0000-0002-8185-1020
+      - name: GeoLocator DP contributors
+    publisher:
+      name: Zenodo
+    doi: 10.5281/zenodo.18187092
+    url: https://doi.org/10.5281/zenodo.18187092
