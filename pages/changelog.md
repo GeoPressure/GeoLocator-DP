@@ -26,6 +26,9 @@ releases](https://github.com/GeoPressure/GeoLocator-DP/releases) in one place.
 - Describe `edges.n` as the number of flights (stationary periods spanned) in the edge, as written by GeoPressureR `path2edge()`, instead of a flight number.
 - Say that `pressurepaths` has one row per pressure measurement of the tag, at its sampling interval, not hourly rows.
 
+### Website
+- Say that a manifest may carry descriptive metadata and the computed `temporal`, `taxonomic` and `numberTags`, and that a package's Zenodo record is authoritative over its manifest ([GeoLocatoR#54](https://github.com/GeoPressure/GeoLocatoR/issues/54)).
+
 ## v1.3
 
 *5 November 2026 — [release](https://github.com/GeoPressure/GeoLocator-DP/releases/tag/v1.3)*

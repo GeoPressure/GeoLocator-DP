@@ -41,6 +41,11 @@ The GeoPressureR extension consists of optional trajectory data generated throug
 
 Following the [Data Package standard](https://datapackage.org/standard/data-package/), each GeoLocator DP contains a [`datapackage.json`](https://github.com/GeoPressure/GeoLocator-DP/blob/main/example/datapackage.json) file with: (1) a machine-readable index of all data [`resources`](https://datapackage.org/standard/data-resource/), (2) a package-level [`$schema`](https://datapackage.org/standard/data-package/#dollar-schema) pointing to the GeoLocator DP profile version. Since v1.0, the local manifest stays intentionally minimal, while metadata are managed in Zenodo. The [GeoLocator DP profile](https://github.com/GeoPressure/GeoLocator-DP/blob/main/geolocator-dp-profile.json) defines the manifest requirements.
 
+A manifest may carry other properties:
+
+- Descriptive metadata (e.g. `title`, `contributors`, `licenses`, `version`), such as for a package not yet on Zenodo or written by an older version. When a package has a Zenodo record, the record is authoritative: readers take its metadata over the manifest's.
+- Coverage computed from the data by [GeoLocatoR](https://geopressure.org/GeoLocatoR/): `temporal` (first and last date of `measurements`), `taxonomic` (scientific names in `tags`) and `numberTags` (number of tags in the package and with each resource or sensor).
+
 ## How to contribute?
 
 If you have multi-sensor geolocator data and would like to contribute a GeoLocator Data Package, follow the workflow below.
